@@ -13,6 +13,7 @@ const projects = [
     video: "/projects/The Bandstand Pantry _ 10M views.mp4",
     views: "10M",
     description: "10M Views Campaign",
+    instagramLink: "https://www.instagram.com/reel/DMUe8UYI66z/?igsh=c2Z0YmVlZWo0bnNy",
   },
   {
     id: 2,
@@ -21,6 +22,7 @@ const projects = [
     video: "/projects/Nostalgia Bakery _ 990k Views.mp4",
     views: "990K",
     description: "990K Views Campaign",
+    instagramLink: "https://www.instagram.com/reel/DIN7z4fIKPp/?igsh=eWx5andsaDY3ejY5",
   },
   {
     id: 3,
@@ -29,6 +31,7 @@ const projects = [
     video: "/projects/The Bandstand Pantry _ 2M+ Views.mp4",
     views: "2M+",
     description: "2M+ Views Campaign",
+    instagramLink: "https://www.instagram.com/reel/DM5OZtptNoS/?igsh=MTA3djBvYnRocG5ydg==",
   },
   {
     id: 4,
@@ -37,6 +40,7 @@ const projects = [
     video: "/projects/Nostalgia Bakery _ 25_ Increased Footfall.mp4",
     views: "25%",
     description: "25% Increased Footfall",
+    instagramLink: "https://www.instagram.com/reel/DAbCldyM5p5/?igsh=MWlvMXhobnp5cW9tag==",
   },
   {
     id: 5,
@@ -45,6 +49,7 @@ const projects = [
     video: "/projects/Swiggy India x TBP Collaboration.mp4",
     views: "Viral",
     description: "Brand Collaboration Campaign",
+    instagramLink: "https://www.instagram.com/reel/C8tY59JouWe/?igsh=MWVqNGZ2dDhtYWY4dA==",
   },
   {
     id: 6,
@@ -53,6 +58,7 @@ const projects = [
     video: "/projects/The Bandstand Pantry _ 2M+ Views.mp4",
     views: "2M+",
     description: "Viral Marketing Success",
+    instagramLink: "https://www.instagram.com/reel/Cy52PVJM7ri/?igsh=MTZtajJueTNmYmQzbg==",
   },
 ];
 
@@ -240,8 +246,11 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
           </motion.p>
 
           {/* View project button - shows on hover */}
-          <motion.button
-            className="flex items-center gap-2 text-white text-sm"
+          <motion.a
+            href={project.instagramLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-white text-sm hover:text-[#e33c25] transition-colors"
             style={{ fontFamily: "'Manrope', sans-serif" }}
             initial={{ opacity: 0, y: 10 }}
             animate={{
@@ -250,9 +259,9 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
             }}
             transition={{ duration: 0.3, delay: 0.1 }}
           >
-            <span>View Project</span>
+            <span>View on Instagram</span>
             <ExternalLink className="w-4 h-4" />
-          </motion.button>
+          </motion.a>
         </motion.div>
 
         {/* Glow effect on hover */}
