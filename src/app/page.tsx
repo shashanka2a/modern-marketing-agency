@@ -14,9 +14,9 @@ export default function Home() {
       
       {/* Main content */}
       <HeroSection />
-      <AboutSection />
-      <StatsSection />
       <PortfolioSection />
+      <StatsSection />
+      <AboutSection />
       <CTASection />
       <Footer />
     </div>
