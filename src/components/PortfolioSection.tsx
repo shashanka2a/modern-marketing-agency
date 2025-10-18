@@ -120,68 +120,58 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
       onTouchStart={() => setIsHovered(true)}
       style={{ perspective: "1000px" }}
     >
-      <motion.div
-        className="relative overflow-hidden rounded-3xl aspect-[4/5] cursor-pointer bg-gray-900 w-full"
-        style={{
-          rotateX: isHovered ? rotateX : 0,
-          rotateY: isHovered ? rotateY : 0,
-          transformStyle: "preserve-3d",
-        }}
-        whileHover={{ scale: 1.02 }}
-        transition={{ duration: 0.4 }}
-      >
-        {/* Video with parallax effect */}
+      <div className="flex flex-col">
+        {/* Video Section */}
         <motion.div
-          className="absolute inset-0"
-          animate={{
-            scale: isHovered ? 1.15 : 1,
+          className="relative overflow-hidden rounded-3xl aspect-[4/5] cursor-pointer bg-gray-900 w-full"
+          style={{
+            rotateX: isHovered ? rotateX : 0,
+            rotateY: isHovered ? rotateY : 0,
+            transformStyle: "preserve-3d",
           }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          whileHover={{ scale: 1.02 }}
+          transition={{ duration: 0.4 }}
         >
-          <video
-            ref={videoRef}
-            className="w-full h-full object-cover"
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            poster={`${project.video.replace('.mp4', '.jpg').replace('.MOV', '.jpg')}`}
-          >
-            <source src={project.video} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </motion.div>
-
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60" />
-
-        {/* Play/Pause indicator */}
-        <motion.div
-          className="absolute top-4 left-4 w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center"
-          animate={{
-            opacity: isPlaying ? 0.8 : 0.4,
-            scale: isPlaying ? 1.1 : 1,
-          }}
-          transition={{ duration: 0.3 }}
-        >
+          {/* Video with parallax effect */}
           <motion.div
-            className="w-0 h-0 border-l-[6px] border-l-white border-y-[4px] border-y-transparent ml-1"
+            className="absolute inset-0"
             animate={{
-              scale: isPlaying ? 0.8 : 1,
+              scale: isHovered ? 1.15 : 1,
             }}
-            transition={{ duration: 0.2 }}
-          />
-        </motion.div>
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            <video
+              ref={videoRef}
+              className="w-full h-full object-cover"
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              poster={`${project.video.replace('.mp4', '.jpg').replace('.MOV', '.jpg')}`}
+            >
+              <source src={project.video} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </motion.div>
 
-        {/* Content overlay - always visible on mobile */}
-        <motion.div
-          className="absolute inset-0 flex flex-col justify-end p-6 sm:p-8"
-          initial={{ opacity: 1 }}
-          animate={{ 
-            opacity: isHovered ? 1 : 0.8,
-          }}
-          transition={{ duration: 0.3 }}
-        >
+          {/* Play/Pause indicator */}
+          <motion.div
+            className="absolute top-4 left-4 w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center"
+            animate={{
+              opacity: isPlaying ? 0.8 : 0.4,
+              scale: isPlaying ? 1.1 : 1,
+            }}
+            transition={{ duration: 0.3 }}
+          >
+            <motion.div
+              className="w-0 h-0 border-l-[6px] border-l-white border-y-[4px] border-y-transparent ml-1"
+              animate={{
+                scale: isPlaying ? 0.8 : 1,
+              }}
+              transition={{ duration: 0.2 }}
+            />
+          </motion.div>
+
           {/* Views badge */}
           <motion.div
             className="absolute top-4 right-4 px-4 py-2 rounded-full bg-black/80 backdrop-blur-md border border-white/30"
@@ -197,6 +187,34 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
             </span>
           </motion.div>
 
+          {/* Glow effect on hover */}
+          <motion.div
+            className="absolute inset-0 pointer-events-none"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isHovered ? 1 : 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-t from-[#e33c25]/20 via-transparent to-transparent" />
+          </motion.div>
+
+          {/* Border highlight */}
+          <motion.div
+            className="absolute inset-0 rounded-3xl border-2 border-transparent pointer-events-none"
+            animate={{
+              borderColor: isHovered ? "rgba(227, 60, 37, 0.5)" : "rgba(0, 0, 0, 0)",
+            }}
+            transition={{ duration: 0.3 }}
+          />
+        </motion.div>
+
+        {/* Content Section Below Video */}
+        <motion.div
+          className="mt-4 p-4"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: index * 0.1 }}
+        >
           {/* Category */}
           <motion.p
             className="text-[#e33c25] mb-2"
@@ -206,96 +224,46 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
               letterSpacing: "0.1em",
               textTransform: "uppercase",
             }}
-            animate={{
-              y: isHovered ? 0 : 10,
-              opacity: isHovered ? 1 : 0.9,
-            }}
-            transition={{ duration: 0.3 }}
           >
             {project.category}
           </motion.p>
 
           {/* Title */}
           <motion.h3
-            className="text-white mb-2"
+            className="text-gray-900 mb-2"
             style={{
               fontFamily: "'DM Serif Display', serif",
-              fontSize: "clamp(1.375rem, 2.5vw, 1.75rem)",
+              fontSize: "clamp(1.25rem, 2vw, 1.5rem)",
               lineHeight: "1.2",
             }}
-            animate={{
-              y: isHovered ? 0 : 10,
-            }}
-            transition={{ duration: 0.3, delay: 0.05 }}
           >
             {project.title}
           </motion.h3>
 
           {/* Description */}
           <motion.p
-            className="text-gray-300 mb-3 text-sm"
+            className="text-gray-600 mb-4 text-sm"
             style={{
               fontFamily: "'Manrope', sans-serif",
             }}
-            animate={{
-              y: isHovered ? 0 : 10,
-            }}
-            transition={{ duration: 0.3, delay: 0.1 }}
           >
             {project.description}
           </motion.p>
 
-          {/* View project button - shows on hover */}
+          {/* View project button */}
           <motion.a
             href={project.instagramLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-white text-sm hover:text-[#e33c25] transition-colors"
+            className="inline-flex items-center gap-2 text-[#e33c25] text-sm hover:text-gray-900 transition-colors"
             style={{ fontFamily: "'Manrope', sans-serif" }}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{
-              opacity: isHovered ? 1 : 0,
-              y: isHovered ? 0 : 10,
-            }}
-            transition={{ duration: 0.3, delay: 0.1 }}
+            whileHover={{ x: 5 }}
           >
             <span>View on Instagram</span>
             <ExternalLink className="w-4 h-4" />
           </motion.a>
         </motion.div>
-
-        {/* Glow effect on hover */}
-        <motion.div
-          className="absolute inset-0 pointer-events-none"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isHovered ? 1 : 0 }}
-          transition={{ duration: 0.3 }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-t from-[#e33c25]/20 via-transparent to-transparent" />
-        </motion.div>
-
-        {/* Border highlight */}
-        <motion.div
-          className="absolute inset-0 rounded-3xl border-2 border-transparent pointer-events-none"
-          animate={{
-            borderColor: isHovered ? "rgba(227, 60, 37, 0.5)" : "rgba(0, 0, 0, 0)",
-          }}
-          transition={{ duration: 0.3 }}
-        />
-      </motion.div>
-
-      {/* Enhanced shadow */}
-      <motion.div
-        className="absolute inset-0 rounded-3xl -z-10 blur-xl"
-        animate={{
-          opacity: isHovered ? 0.4 : 0.2,
-          scale: isHovered ? 1.05 : 1,
-        }}
-        style={{
-          background: "linear-gradient(to bottom, rgba(227, 60, 37, 0.3), transparent)",
-        }}
-        transition={{ duration: 0.3 }}
-      />
+      </div>
     </motion.div>
   );
 }
