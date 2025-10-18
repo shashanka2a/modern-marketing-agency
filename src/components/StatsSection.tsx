@@ -4,10 +4,34 @@ import { motion, useInView } from "motion/react";
 import { useRef, useEffect, useState } from "react";
 
 const stats = [
-  { value: 500, suffix: "M+", label: "Total Views Generated" },
-  { value: 150, suffix: "+", label: "Brands Amplified" },
-  { value: 95, suffix: "%", label: "Client Retention" },
-  { value: 50, suffix: "X", label: "Average ROI" },
+  { 
+    name: "The Bandstand Pantry",
+    title: "Restaurant Brand",
+    metric: "15M+ Views",
+    posts: "in 8 Posts",
+    icon: "👁"
+  },
+  { 
+    name: "Nostalgia Bakery", 
+    title: "Bakery Brand",
+    metric: "2.5M+ Views",
+    posts: "in 12 Posts",
+    icon: "👁"
+  },
+  { 
+    name: "Cluckin India",
+    title: "Food Brand", 
+    metric: "6M+ Profile Visits",
+    posts: "in 15 Posts",
+    icon: "👥"
+  },
+  { 
+    name: "Varsha Rainwear",
+    title: "Fashion Brand",
+    metric: "60% Sales Increase", 
+    posts: "in 6 Posts",
+    icon: "📈"
+  },
 ];
 
 function AnimatedNumber({ value, suffix }: { value: number; suffix: string }) {
@@ -45,23 +69,7 @@ function AnimatedNumber({ value, suffix }: { value: number; suffix: string }) {
 
 export function StatsSection() {
   return (
-    <div className="bg-black py-24 px-4 sm:px-6 relative overflow-hidden">
-      {/* Animated grid background */}
-      <div className="absolute inset-0 opacity-10">
-        <motion.div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `
-              linear-gradient(to right, #e33c25 1px, transparent 1px),
-              linear-gradient(to bottom, #e33c25 1px, transparent 1px)
-            `,
-            backgroundSize: "50px 50px",
-          }}
-          animate={{ backgroundPosition: ["0px 0px", "50px 50px"] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        />
-      </div>
-
+    <div className="bg-gray-900 py-24 px-4 sm:px-6 relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -78,60 +86,72 @@ export function StatsSection() {
               lineHeight: "1.2",
             }}
           >
-            Results That Speak
+            Don't Take Our Word For It.
           </h2>
           <p
-            className="text-gray-400"
+            className="text-white"
             style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              fontStyle: "italic",
-              fontSize: "clamp(1.125rem, 2vw, 1.25rem)",
+              fontFamily: "'Manrope', sans-serif",
+              fontSize: "clamp(1.125rem, 2vw, 1.5rem)",
+              lineHeight: "1.3",
             }}
           >
-            Numbers don't lie
+            Our{" "}
+            <span className="font-bold">Work</span>{" "}
+            Speaks{" "}
+            <span className="font-bold text-[#e33c25]">Louder</span>.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {stats.map((stat, index) => (
             <motion.div
-              key={stat.label}
+              key={stat.name}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="text-center group"
+              className="group"
             >
+              {/* Card */}
               <motion.div
-                className="relative inline-block mb-4"
-                whileHover={{ scale: 1.05 }}
+                className="bg-gray-800 rounded-2xl p-6 hover:bg-gray-700 transition-colors duration-300"
+                whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <motion.div
-                  className="absolute inset-0 bg-[#e33c25] rounded-2xl blur-xl opacity-0 group-hover:opacity-30"
-                  transition={{ duration: 0.3 }}
-                />
-                <div
-                  className="text-white relative"
+                {/* Name */}
+                <h3
+                  className="text-white text-lg font-semibold mb-2"
                   style={{
-                    fontFamily: "'DM Serif Display', serif",
-                    fontSize: "clamp(2.5rem, 6vw, 4rem)",
-                    lineHeight: "1",
+                    fontFamily: "'Manrope', sans-serif",
                   }}
                 >
-                  <AnimatedNumber value={stat.value} suffix={stat.suffix} />
+                  {stat.name}
+                </h3>
+
+                {/* Title */}
+                <p
+                  className="text-gray-300 text-sm mb-4"
+                  style={{
+                    fontFamily: "'Manrope', sans-serif",
+                  }}
+                >
+                  {stat.title}
+                </p>
+
+                {/* Metric */}
+                <div className="flex items-center gap-2">
+                  <span className="text-[#e33c25] text-sm">{stat.icon}</span>
+                  <span
+                    className="text-white text-sm"
+                    style={{
+                      fontFamily: "'Manrope', sans-serif",
+                    }}
+                  >
+                    {stat.metric} {stat.posts}
+                  </span>
                 </div>
               </motion.div>
-              <p
-                className="text-gray-400"
-                style={{
-                  fontFamily: "'Manrope', sans-serif",
-                  fontSize: "clamp(0.875rem, 1.5vw, 1rem)",
-                  lineHeight: "1.5",
-                }}
-              >
-                {stat.label}
-              </p>
             </motion.div>
           ))}
         </div>
