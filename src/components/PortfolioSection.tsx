@@ -27,11 +27,11 @@ const projects = [
   {
     id: 3,
     title: "The Bandstand Pantry",
-    category: "Engagement",
-    video: "/projects/The Bandstand Pantry _ 2M+ Views.mp4",
-    views: "2M+",
-    description: "2M+ Views Campaign",
-    instagramLink: "https://www.instagram.com/reel/DMUe8UYI66z/?igsh=c2Z0YmVlZWo0bnNy",
+    category: "Collaboration",
+    video: "/projects/Swiggy India x TBP Collaboration.mp4",
+    views: "Viral",
+    description: "Brand Collaboration Campaign",
+    instagramLink: "https://www.instagram.com/reel/C8tY59JouWe/?igsh=MWVqNGZ2dDhtYWY4dA%3D%3D",
   },
   {
     id: 4,
@@ -45,11 +45,11 @@ const projects = [
   {
     id: 5,
     title: "The Bandstand Pantry",
-    category: "Collaboration",
-    video: "/projects/Swiggy India x TBP Collaboration.mp4",
-    views: "Viral",
-    description: "Brand Collaboration Campaign",
-    instagramLink: "https://www.instagram.com/reel/C8tY59JouWe/?igsh=MWVqNGZ2dDhtYWY4dA%3D%3D",
+    category: "Engagement",
+    video: "/projects/The Bandstand Pantry _ 2M+ Views.mp4",
+    views: "2M+",
+    description: "2M+ Views Campaign",
+    instagramLink: "https://www.instagram.com/reel/DMUe8UYI66z/?igsh=c2Z0YmVlZWo0bnNy",
   },
   {
     id: 6,
