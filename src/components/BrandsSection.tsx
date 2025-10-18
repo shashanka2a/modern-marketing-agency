@@ -52,7 +52,7 @@ export function BrandsSection() {
               lineHeight: "1.3",
             }}
           >
-            Clients Featured On:
+            Our Clients
           </h2>
         </motion.div>
 
