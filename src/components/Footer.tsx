@@ -32,9 +32,9 @@ export function Footer() {
             <Image
               src="/adverzeo.png"
               alt="Adverzeo"
-              width={200}
-              height={60}
-              className="h-12 w-auto"
+              width={300}
+              height={90}
+              className="h-20 w-auto"
               priority
             />
           </motion.div>
