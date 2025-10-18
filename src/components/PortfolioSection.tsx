@@ -8,51 +8,59 @@ import { ExternalLink } from "lucide-react";
 const projects = [
   {
     id: 1,
-    title: "Creative Workspace",
-    category: "Agency Branding",
-    image: "https://images.unsplash.com/photo-1516542076529-1ea3854896f2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmVhdGl2ZSUyMGFnZW5jeSUyMHdvcmtzcGFjZXxlbnwxfHx8fDE3NjA2NjQ3OTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
-    views: "2.5M",
+    title: "The Bandstand Pantry",
+    category: "Content Strategy",
+    video: "/projects/The Bandstand Pantry _ 10M views.mp4",
+    views: "10M",
+    description: "10M Views Campaign",
   },
   {
     id: 2,
-    title: "Brand Identity System",
-    category: "Visual Design",
-    image: "https://images.unsplash.com/photo-1655141559812-42f8c1e8942d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxicmFuZCUyMGRlc2lnbiUyMG1vY2t1cHxlbnwxfHx8fDE3NjA3NjMwNTR8MA&ixlib=rb-4.1.0&q=80&w=1080",
-    views: "1.8M",
+    title: "Nostalgia Bakery",
+    category: "Brand Growth",
+    video: "/projects/Nostalgia Bakery _ 990k Views.mp4",
+    views: "990K",
+    description: "990K Views Campaign",
   },
   {
     id: 3,
-    title: "Digital Strategy",
-    category: "Marketing Campaign",
-    image: "https://images.unsplash.com/photo-1542744094-f77e9f7a10b8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkaWdpdGFsJTIwbWFya2V0aW5nJTIwd29ya3NwYWNlfGVufDF8fHx8MTc2MDcxNzA4MXww&ixlib=rb-4.1.0&q=80&w=1080",
-    views: "3.2M",
+    title: "The Bandstand Pantry",
+    category: "Engagement",
+    video: "/projects/The Bandstand Pantry _ 2M+ Views.mp4",
+    views: "2M+",
+    description: "2M+ Views Campaign",
   },
   {
     id: 4,
-    title: "Creative Branding",
-    category: "Brand Development",
-    image: "https://images.unsplash.com/photo-1758873272540-439a105db676?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmVhdGl2ZSUyMGJyYW5kaW5nJTIwcHJvamVjdHxlbnwxfHx8fDE3NjA3NzkzNjh8MA&ixlib=rb-4.1.0&q=80&w=1080",
-    views: "4.1M",
+    title: "Nostalgia Bakery",
+    category: "Foot Traffic",
+    video: "/projects/Nostalgia Bakery _ 25_ Increased Footfall.mp4",
+    views: "25%",
+    description: "25% Increased Footfall",
   },
   {
     id: 5,
-    title: "Modern Brand Identity",
-    category: "Corporate Design",
-    image: "https://images.unsplash.com/photo-1760263137421-7dc09d372e09?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBicmFuZCUyMGlkZW50aXR5fGVufDF8fHx8MTc2MDc4NjI0Nnww&ixlib=rb-4.1.0&q=80&w=1080",
-    views: "2.9M",
+    title: "Swiggy India x TBP",
+    category: "Collaboration",
+    video: "/projects/Swiggy India x TBP Collaboration.mp4",
+    views: "Viral",
+    description: "Brand Collaboration Campaign",
   },
   {
     id: 6,
-    title: "Design Studio",
-    category: "Creative Direction",
-    image: "https://images.unsplash.com/photo-1510074377623-8cf13fb86c08?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkZXNpZ24lMjBzdHVkaW8lMjB3b3Jrc3BhY2V8ZW58MXx8fHwxNzYwNjk3MDcwfDA&ixlib=rb-4.1.0&q=80&w=1080",
-    views: "1.5M",
+    title: "The Bandstand Pantry",
+    category: "Viral Marketing",
+    video: "/projects/The Bandstand Pantry _ 2M+ Views.mp4",
+    views: "2M+",
+    description: "Viral Marketing Success",
   },
 ];
 
 function ProjectCard({ project, index }: { project: typeof projects[0]; index: number }) {
   const [isHovered, setIsHovered] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -71,8 +79,20 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
 
   const handleMouseLeave = () => {
     setIsHovered(false);
+    setIsPlaying(false);
+    if (videoRef.current) {
+      videoRef.current.pause();
+    }
     mouseX.set(0);
     mouseY.set(0);
+  };
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+    setIsPlaying(true);
+    if (videoRef.current) {
+      videoRef.current.play().catch(console.error);
+    }
   };
 
   return (
@@ -89,7 +109,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
       }}
       className="group relative perspective-1000"
       onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovered(true)}
+      onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onTouchStart={() => setIsHovered(true)}
       style={{ perspective: "1000px" }}
@@ -104,7 +124,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
         whileHover={{ scale: 1.02 }}
         transition={{ duration: 0.4 }}
       >
-        {/* Image with parallax effect */}
+        {/* Video with parallax effect */}
         <motion.div
           className="absolute inset-0"
           animate={{
@@ -112,15 +132,40 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
           }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <ImageWithFallback
-            src={project.image}
-            alt={project.title}
+          <video
+            ref={videoRef}
             className="w-full h-full object-cover"
-          />
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            poster={`${project.video.replace('.mp4', '.jpg').replace('.MOV', '.jpg')}`}
+          >
+            <source src={project.video} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </motion.div>
 
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60" />
+
+        {/* Play/Pause indicator */}
+        <motion.div
+          className="absolute top-4 left-4 w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center"
+          animate={{
+            opacity: isPlaying ? 0.8 : 0.4,
+            scale: isPlaying ? 1.1 : 1,
+          }}
+          transition={{ duration: 0.3 }}
+        >
+          <motion.div
+            className="w-0 h-0 border-l-[6px] border-l-white border-y-[4px] border-y-transparent ml-1"
+            animate={{
+              scale: isPlaying ? 0.8 : 1,
+            }}
+            transition={{ duration: 0.2 }}
+          />
+        </motion.div>
 
         {/* Content overlay - always visible on mobile */}
         <motion.div
@@ -166,7 +211,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
 
           {/* Title */}
           <motion.h3
-            className="text-white mb-3"
+            className="text-white mb-2"
             style={{
               fontFamily: "'DM Serif Display', serif",
               fontSize: "clamp(1.375rem, 2.5vw, 1.75rem)",
@@ -179,6 +224,20 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
           >
             {project.title}
           </motion.h3>
+
+          {/* Description */}
+          <motion.p
+            className="text-gray-300 mb-3 text-sm"
+            style={{
+              fontFamily: "'Manrope', sans-serif",
+            }}
+            animate={{
+              y: isHovered ? 0 : 10,
+            }}
+            transition={{ duration: 0.3, delay: 0.1 }}
+          >
+            {project.description}
+          </motion.p>
 
           {/* View project button - shows on hover */}
           <motion.button
