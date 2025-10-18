@@ -1,0 +1,16 @@
+{
+  "name": "Adverzeo - The Agency Behind Millions of Views",
+  "short_name": "Adverzeo",
+  "description": "Our impeccable strategy helps brands go viral, achieving millions of views and global recognition.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#e33c25",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
