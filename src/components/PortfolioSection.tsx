@@ -3,7 +3,7 @@
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import { useState, useRef } from "react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 
 const projects = [
   {
@@ -269,6 +269,32 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
 }
 
 export function PortfolioSection() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  const scrollToProject = (index: number) => {
+    if (carouselRef.current) {
+      const cardWidth = 320; // w-80 = 320px
+      const gap = 24; // gap-6 = 24px
+      const scrollPosition = index * (cardWidth + gap);
+      carouselRef.current.scrollTo({
+        left: scrollPosition,
+        behavior: 'smooth'
+      });
+      setCurrentIndex(index);
+    }
+  };
+
+  const scrollLeft = () => {
+    const newIndex = Math.max(0, currentIndex - 1);
+    scrollToProject(newIndex);
+  };
+
+  const scrollRight = () => {
+    const newIndex = Math.min(projects.length - 1, currentIndex + 1);
+    scrollToProject(newIndex);
+  };
+
   return (
     <div className="bg-gradient-to-b from-gray-50 to-white py-16 sm:py-24 lg:py-32 px-4 sm:px-6 relative overflow-hidden">
       {/* Decorative background elements */}
@@ -347,7 +373,37 @@ export function PortfolioSection() {
 
         {/* Portfolio Carousel */}
         <div className="relative">
-          <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-4 scrollbar-hide">
+          {/* Navigation Arrows */}
+          <motion.button
+            onClick={scrollLeft}
+            disabled={currentIndex === 0}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 rounded-full bg-white shadow-lg border border-gray-200 flex items-center justify-center text-gray-600 hover:text-[#e33c25] hover:border-[#e33c25] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </motion.button>
+
+          <motion.button
+            onClick={scrollRight}
+            disabled={currentIndex === projects.length - 1}
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-12 h-12 rounded-full bg-white shadow-lg border border-gray-200 flex items-center justify-center text-gray-600 hover:text-[#e33c25] hover:border-[#e33c25] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <ChevronRight className="w-6 h-6" />
+          </motion.button>
+
+          <div 
+            ref={carouselRef}
+            className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-4 scrollbar-hide"
+          >
             {projects.map((project, index) => (
               <div key={project.id} className="flex-shrink-0 w-80 snap-center">
                 <ProjectCard project={project} index={index} />
@@ -360,7 +416,10 @@ export function PortfolioSection() {
             {projects.map((_, index) => (
               <motion.button
                 key={index}
-                className="w-2 h-2 rounded-full bg-gray-300 hover:bg-[#e33c25] transition-colors"
+                onClick={() => scrollToProject(index)}
+                className={`w-2 h-2 rounded-full transition-colors ${
+                  index === currentIndex ? 'bg-[#e33c25]' : 'bg-gray-300 hover:bg-[#e33c25]'
+                }`}
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.9 }}
               />
