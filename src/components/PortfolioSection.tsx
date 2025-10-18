@@ -121,7 +121,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
       style={{ perspective: "1000px" }}
     >
       <motion.div
-        className="relative overflow-hidden rounded-3xl aspect-[4/5] cursor-pointer bg-gray-900"
+        className="relative overflow-hidden rounded-3xl aspect-[4/5] cursor-pointer bg-gray-900 w-full"
         style={{
           rotateX: isHovered ? rotateX : 0,
           rotateY: isHovered ? rotateY : 0,
@@ -377,11 +377,27 @@ export function PortfolioSection() {
           </p>
         </motion.div>
 
-        {/* Bento-style Portfolio Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-          {projects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
-          ))}
+        {/* Portfolio Carousel */}
+        <div className="relative">
+          <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-4 scrollbar-hide">
+            {projects.map((project, index) => (
+              <div key={project.id} className="flex-shrink-0 w-80 snap-center">
+                <ProjectCard project={project} index={index} />
+              </div>
+            ))}
+          </div>
+          
+          {/* Carousel Navigation Dots */}
+          <div className="flex justify-center mt-8 gap-2">
+            {projects.map((_, index) => (
+              <motion.button
+                key={index}
+                className="w-2 h-2 rounded-full bg-gray-300 hover:bg-[#e33c25] transition-colors"
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
+              />
+            ))}
+          </div>
         </div>
 
         {/* View all projects CTA */}
