@@ -15,9 +15,9 @@ export function HeroSection() {
     offset: ["start start", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95]);
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.8], [1, 0.98]);
 
   return (
     <div ref={containerRef} className="relative overflow-hidden bg-[#000000] min-h-screen flex items-center justify-center px-4 sm:px-6">
