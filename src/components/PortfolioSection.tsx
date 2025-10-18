@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -146,7 +146,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
               muted
               loop
               playsInline
-              preload="metadata"
+              preload="auto"
               poster={`${project.video.replace('.mp4', '.jpg').replace('.MOV', '.jpg')}`}
             >
               <source src={project.video} type="video/mp4" />
@@ -271,6 +271,18 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
 export function PortfolioSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
+
+  // Preload all videos when component mounts
+  useEffect(() => {
+    projects.forEach((project) => {
+      const video = document.createElement('video');
+      video.preload = 'auto';
+      video.src = project.video;
+      video.muted = true;
+      video.loop = true;
+      video.playsInline = true;
+    });
+  }, []);
 
   const scrollToProject = (index: number) => {
     if (carouselRef.current) {
