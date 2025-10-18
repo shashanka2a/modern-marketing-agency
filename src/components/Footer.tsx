@@ -1,7 +1,8 @@
 "use client";
 
-import { Zap, Instagram, Linkedin, Youtube, Facebook } from "lucide-react";
+import { Instagram, Linkedin, Youtube, Facebook } from "lucide-react";
 import { motion } from "motion/react";
+import Image from "next/image";
 
 const footerLinks = [
   { name: "About", href: "#" },
@@ -24,25 +25,18 @@ export function Footer() {
           transition={{ duration: 0.6 }}
         >
           <motion.div
-            className="flex items-center justify-center gap-2 mb-4"
+            className="flex items-center justify-center mb-4"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            <motion.div
-              animate={{ rotate: [0, 360] }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            >
-              <Zap className="w-8 h-8 text-white" />
-            </motion.div>
-            <span
-              className="text-white text-4xl font-bold"
-              style={{
-                fontFamily: "'Manrope', sans-serif",
-                letterSpacing: "-0.02em",
-              }}
-            >
-              Adverzeo
-            </span>
+            <Image
+              src="/adverzeo.png"
+              alt="Adverzeo"
+              width={200}
+              height={60}
+              className="h-12 w-auto"
+              priority
+            />
           </motion.div>
           
           {/* Separator line */}
