@@ -12,7 +12,6 @@ const projects = [
     category: "Content Strategy",
     video: "/projects/The Bandstand Pantry _ 10M views.mp4",
     views: "10M",
-    description: "10M Views Campaign",
     instagramLink: "https://www.instagram.com/reel/DAbCldyM5p5/?igsh=MWlvMXhobnp5cW9tag%3D%3D",
   },
   {
@@ -21,7 +20,6 @@ const projects = [
     category: "Brand Growth",
     video: "/projects/Nostalgia Bakery _ 990k Views.mp4",
     views: "990K",
-    description: "990K Views Campaign",
     instagramLink: "https://www.instagram.com/reel/DM5OZtptNoS/?igsh=MTA3djBvYnRocG5ydg%3D%3D",
   },
   {
@@ -30,7 +28,6 @@ const projects = [
     category: "Collaboration",
     video: "/projects/Swiggy India x TBP Collaboration.mp4",
     views: "Viral",
-    description: "Brand Collaboration Campaign",
     instagramLink: "https://www.instagram.com/reel/C8tY59JouWe/?igsh=MWVqNGZ2dDhtYWY4dA%3D%3D",
   },
   {
@@ -39,7 +36,6 @@ const projects = [
     category: "Foot Traffic",
     video: "/projects/Nostalgia Bakery _ 25_ Increased Footfall.mp4",
     views: "25%",
-    description: "25% Increased Footfall",
     instagramLink: "https://www.instagram.com/reel/DIN7z4fIKPp/?igsh=eWx5andsaDY3ejY5",
   },
   {
@@ -48,7 +44,6 @@ const projects = [
     category: "Engagement",
     video: "/projects/The Bandstand Pantry _ 2M+ Views.mp4",
     views: "2M+",
-    description: "2M+ Views Campaign",
     instagramLink: "https://www.instagram.com/reel/DMUe8UYI66z/?igsh=c2Z0YmVlZWo0bnNy",
   },
   {
@@ -57,7 +52,6 @@ const projects = [
     category: "Viral Marketing",
     video: "/projects/The Bandstand Pantry _ 2M+ Views.mp4",
     views: "2M+",
-    description: "Viral Marketing Success",
     instagramLink: "https://www.instagram.com/reel/Cy52PVJM7ri/?igsh=MTZtajJueTNmYmQzbg==",
   },
 ];
@@ -240,15 +234,6 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
             {project.title}
           </motion.h3>
 
-          {/* Description */}
-          <motion.p
-            className="text-gray-600 mb-4 text-sm"
-            style={{
-              fontFamily: "'Manrope', sans-serif",
-            }}
-          >
-            {project.description}
-          </motion.p>
 
           {/* View project button */}
           <motion.a
