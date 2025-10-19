@@ -2,7 +2,6 @@
 
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
-import { ViralIllustration } from "./CustomIllustrations";
 import Image from "next/image";
 
 export function HeroSection() {
@@ -60,20 +59,6 @@ export function HeroSection() {
         />
       </div>
 
-      {/* Custom illustration */}
-      <motion.div
-        className="absolute bottom-[10%] left-[5%] opacity-10"
-        animate={{
-          rotate: [0, 360],
-        }}
-        transition={{
-          duration: 30,
-          repeat: Infinity,
-          ease: "linear",
-        }}
-      >
-        <ViralIllustration />
-      </motion.div>
 
       {/* Content */}
       <motion.div
