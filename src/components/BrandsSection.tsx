@@ -58,9 +58,8 @@ export function BrandsSection() {
         </motion.div>
 
         {/* Scrolling brands */}
-        <div className="relative">
-          <div className="flex overflow-x-auto scrollbar-hide">
-            <div className="flex gap-8 sm:gap-12 animate-scroll">
+        <div className="relative overflow-hidden">
+          <div className="flex animate-scroll">
               {/* First set of brands */}
               {brands.map((brand, index) => (
                 <motion.div
@@ -71,13 +70,13 @@ export function BrandsSection() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.05 }}
                 >
-                  <div className="w-32 h-16 sm:w-40 sm:h-20 relative grayscale hover:grayscale-0 transition-all duration-300 opacity-40 hover:opacity-80">
+                  <div className="w-40 h-20 sm:w-48 sm:h-24 relative grayscale hover:grayscale-0 transition-all duration-300 opacity-40 hover:opacity-80 mx-4">
                     <ImagePreloader
                       src={brand.logo}
                       alt={brand.name}
-                      width={160}
-                      height={80}
-                      className="w-full h-full object-contain"
+                      width={192}
+                      height={96}
+                      className="w-full h-full object-contain p-2"
                     />
                   </div>
                 </motion.div>
@@ -92,13 +91,13 @@ export function BrandsSection() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: (index + brands.length) * 0.05 }}
                 >
-                  <div className="w-32 h-16 sm:w-40 sm:h-20 relative grayscale hover:grayscale-0 transition-all duration-300 opacity-40 hover:opacity-80">
+                  <div className="w-40 h-20 sm:w-48 sm:h-24 relative grayscale hover:grayscale-0 transition-all duration-300 opacity-40 hover:opacity-80 mx-4">
                     <ImagePreloader
                       src={brand.logo}
                       alt={brand.name}
-                      width={160}
-                      height={80}
-                      className="w-full h-full object-contain"
+                      width={192}
+                      height={96}
+                      className="w-full h-full object-contain p-2"
                     />
                   </div>
                 </motion.div>
@@ -119,7 +118,8 @@ export function BrandsSection() {
         }
         
         .animate-scroll {
-          animation: scroll 30s linear infinite;
+          animation: scroll 40s linear infinite;
+          will-change: transform;
         }
         
         .animate-scroll:hover {
