@@ -57,18 +57,13 @@ export function CTASection() {
               We're not here to be your{" "}
             </motion.span>
             <motion.span
-              className="inline-block relative"
+              className="inline-block"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
-              <span className="relative z-10 text-[#e33c25]">content agency</span>
-              <motion.span
-                className="absolute inset-0 bg-[#e33c25] blur-xl opacity-30"
-                animate={{ opacity: [0.2, 0.4, 0.2] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              />
+              <span className="text-[#e33c25]">content agency</span>
             </motion.span>
             <br className="hidden sm:inline" />
             <motion.span

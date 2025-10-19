@@ -45,11 +45,12 @@ export function BrandsSection() {
           className="text-center mb-12"
         >
           <h2
-            className="text-gray-900 mb-4 font-bold"
+            className="text-gray-900 mb-4"
             style={{
-              fontFamily: "'Manrope', sans-serif",
-              fontSize: "clamp(1.5rem, 3vw, 2rem)",
-              lineHeight: "1.3",
+              fontFamily: "'DM Serif Display', serif",
+              fontSize: "clamp(1.75rem, 4vw, 3.5rem)",
+              lineHeight: "1.2",
+              letterSpacing: "-0.01em",
             }}
           >
             Our Clients
