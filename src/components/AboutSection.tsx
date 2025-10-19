@@ -92,6 +92,7 @@ export function AboutSection() {
                   transition={{ duration: 0.8, delay: 0.5 }}
                 />
               </motion.span>
+              . Here's How:
             </h2>
             <motion.p
               className="text-[#000000] mt-4"

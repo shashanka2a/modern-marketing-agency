@@ -19,8 +19,8 @@ export default function Home() {
       <PortfolioSection />
       <StatsSection />
       <BrandsSection />
-      <BookingSection />
       <AboutSection />
+      <BookingSection />
       <CTASection />
       <Footer />
     </div>
