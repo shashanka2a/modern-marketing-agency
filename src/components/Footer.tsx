@@ -14,7 +14,7 @@ const footerLinks = [
 
 export function Footer() {
   return (
-    <footer className="bg-black py-16 px-4 sm:px-6">
+    <footer className="bg-white py-16 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
         {/* Logo Section */}
         <motion.div
@@ -30,7 +30,7 @@ export function Footer() {
             transition={{ type: "spring", stiffness: 300 }}
           >
             <Image
-              src="/adverzeo.png"
+              src="/logo.png"
               alt="Adverzeo"
               width={300}
               height={90}
@@ -40,7 +40,7 @@ export function Footer() {
           </motion.div>
           
           {/* Separator line */}
-          <div className="w-full h-px bg-white/20 mb-8" />
+          <div className="w-full h-px bg-gray-300 mb-8" />
         </motion.div>
 
         {/* Main Footer Content */}
@@ -66,7 +66,7 @@ export function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-300"
+                  className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-all duration-300"
                   aria-label={social.label}
                   initial={{ opacity: 0, scale: 0 }}
                   whileInView={{ opacity: 1, scale: 1 }}
@@ -97,7 +97,7 @@ export function Footer() {
               <motion.a
                 key={link.name}
                 href={link.href}
-                className="text-white hover:text-gray-300 transition-colors duration-300 text-sm font-medium"
+                className="text-gray-600 hover:text-gray-900 transition-colors duration-300 text-sm font-medium"
                 style={{ fontFamily: "'Manrope', sans-serif" }}
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -120,13 +120,13 @@ export function Footer() {
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           <p
-            className="text-white/70 text-sm mb-2"
+            className="text-gray-600 text-sm mb-2"
             style={{ fontFamily: "'Manrope', sans-serif" }}
           >
             Proudly created in India.
           </p>
           <p
-            className="text-white/70 text-sm"
+            className="text-gray-600 text-sm"
             style={{ fontFamily: "'Manrope', sans-serif" }}
           >
             All Right Reserved, All Wrong Reversed.
