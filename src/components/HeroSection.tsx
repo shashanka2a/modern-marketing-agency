@@ -156,7 +156,7 @@ export function HeroSection() {
 
           {/* Main headline with scrolling text effect */}
           <motion.h1
-            className="text-white mb-4 sm:mb-6 px-4"
+            className="text-white mb-4 sm:mb-6 text-center"
             style={{
               fontFamily: "'DM Serif Display', serif",
               fontSize: "clamp(2.5rem, 8vw, 6.5rem)",
