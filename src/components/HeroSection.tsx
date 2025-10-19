@@ -210,26 +210,6 @@ export function HeroSection() {
         </motion.div>
 
 
-        {/* Social proof badges */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.3 }}
-          className="mt-12 flex items-center justify-center gap-8 flex-wrap px-4"
-        >
-          {["500M+ Views", "150+ Brands", "95% Retention"].map((stat, i) => (
-            <motion.div
-              key={stat}
-              className="text-gray-400 text-sm"
-              style={{ fontFamily: "'Manrope', sans-serif" }}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.4 + i * 0.1 }}
-            >
-              ✓ {stat}
-            </motion.div>
-          ))}
-        </motion.div>
       </motion.div>
 
       {/* Bottom gradient fade */}
