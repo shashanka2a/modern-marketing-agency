@@ -4,21 +4,44 @@ import { motion, useScroll, useTransform } from "motion/react";
 import { useRef, useState } from "react";
 import { BrandStrategyIllustration, CreativeProductionIllustration } from "./CustomIllustrations";
 
+// Custom Icons
+const LightbulbIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M9 21h6M12 3a5 5 0 0 1 5 5c0 2.36-1.5 4.5-1.5 4.5H8.5S7 10.36 7 8a5 5 0 0 1 5-5z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M12 17v-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+const FilmIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="2" y="3" width="20" height="18" rx="2" ry="2" stroke="currentColor" strokeWidth="2"/>
+    <path d="M7 3v18M17 3v18M2 12h20" stroke="currentColor" strokeWidth="2"/>
+    <path d="M2 7h5M2 17h5M17 7h5M17 17h5" stroke="currentColor" strokeWidth="2"/>
+  </svg>
+);
+
+const TrendingUpIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <polyline points="17 6 23 6 23 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
 const services = [
   {
-    emoji: "💡",
+    icon: LightbulbIcon,
     title: "01",
     description: "Brainstorming ideas and crafting ideas unique to your brand.",
     illustration: BrandStrategyIllustration,
   },
   {
-    emoji: "🎬",
+    icon: FilmIcon,
     title: "02",
     description: "Execute the ideas with filming, direction, and editing of every video.",
     illustration: CreativeProductionIllustration,
   },
   {
-    emoji: "📈",
+    icon: TrendingUpIcon,
     title: "03",
     description: "Amplify your account with posting, captions, and engaging with your niche.",
     illustration: BrandStrategyIllustration,
@@ -92,7 +115,6 @@ export function AboutSection() {
                   transition={{ duration: 0.8, delay: 0.5 }}
                 />
               </motion.span>
-              . Here's How:
             </h2>
             <motion.p
               className="text-[#000000] mt-4"
@@ -186,7 +208,9 @@ export function AboutSection() {
                         transition={{ type: "spring", stiffness: 300 }}
                       >
                         <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-[#e33c25]/10 via-[#e33c25]/5 to-transparent rounded-2xl flex items-center justify-center shadow-lg">
-                          <span className="text-4xl sm:text-5xl">{service.emoji}</span>
+                          <div className="text-4xl sm:text-5xl text-white">
+                            <service.icon />
+                          </div>
                         </div>
                       </motion.div>
 
