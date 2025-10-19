@@ -8,7 +8,7 @@ import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 const projects = [
   {
     id: 1,
-    title: "The Bandstand Pantry",
+    title: "Bandstand Pantry",
     category: "Content Strategy",
     video: "/projects/The Bandstand Pantry _ 10M views.mp4",
     metric: "10M+ Views",
@@ -28,7 +28,7 @@ const projects = [
   },
   {
     id: 3,
-    title: "The Bandstand Pantry",
+    title: "Bandstand Pantry",
     category: "Collaboration",
     video: "/projects/Swiggy India x TBP Collaboration.mp4",
     metric: "Viral Campaign",
@@ -48,7 +48,7 @@ const projects = [
   },
   {
     id: 5,
-    title: "The Bandstand Pantry",
+    title: "Bandstand Pantry",
     category: "Engagement",
     video: "/projects/The Bandstand Pantry _ 2M+ Views.mp4",
     metric: "2M+ Views",
@@ -58,7 +58,7 @@ const projects = [
   },
   {
     id: 6,
-    title: "The Bandstand Pantry",
+    title: "Bandstand Pantry",
     category: "Viral Marketing",
     video: "/projects/The Bandstand Pantry _ 2M+ Views.mp4",
     metric: "2M+ Views",
@@ -199,7 +199,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
                   className="text-white text-lg font-semibold"
                   style={{ fontFamily: "'Manrope', sans-serif" }}
                 >
-                  {project.metric} in {project.posts}
+                  {project.posts.includes('in ') ? `${project.metric} ${project.posts}` : `${project.metric} in ${project.posts}`}
                 </p>
               </div>
               <div className="ml-4">
