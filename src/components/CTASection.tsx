@@ -6,7 +6,7 @@ import { Sparkles, Rocket, Star } from "lucide-react";
 
 export function CTASection() {
   return (
-    <div className="bg-[#000000] py-16 sm:py-24 lg:py-32 px-4 sm:px-6 relative overflow-hidden">
+    <div className="bg-white py-16 sm:py-24 lg:py-32 px-4 sm:px-6 relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Animated grid */}
@@ -107,7 +107,7 @@ export function CTASection() {
         >
           {/* Animated badge */}
           <motion.div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-8"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 backdrop-blur-sm border border-gray-200 mb-8"
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}
             viewport={{ once: true }}
@@ -120,7 +120,7 @@ export function CTASection() {
               <Sparkles className="w-4 h-4 text-[#e33c25]" />
             </motion.div>
             <span
-              className="text-gray-400 text-sm"
+              className="text-gray-600 text-sm"
               style={{ fontFamily: "'Manrope', sans-serif" }}
             >
               Let's Create Together
@@ -129,7 +129,7 @@ export function CTASection() {
 
           {/* Main headline with stagger animation */}
           <motion.h2
-            className="text-white mb-6 sm:mb-8 px-4"
+            className="text-gray-900 mb-6 sm:mb-8 px-4"
             style={{
               fontFamily: "'DM Serif Display', serif",
               fontSize: "clamp(1.75rem, 4vw, 3.5rem)",
