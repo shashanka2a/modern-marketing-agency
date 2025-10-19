@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "motion/react";
-import { Calendar, ArrowRight } from "lucide-react";
 
 export function BookingSection() {
   return (
@@ -33,39 +32,23 @@ export function BookingSection() {
             Make Yourself a Victim of Engagement
           </motion.h2>
 
-          {/* CTA Button */}
-          <motion.a
-            href="https://cal.com/adverzeo/strategy"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 bg-[#e33c25] hover:bg-[#c42d1a] text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-[#e33c25]/25"
-            style={{ fontFamily: "'Manrope', sans-serif" }}
+          {/* Calendly iframe */}
+          <motion.div
+            className="w-full max-w-4xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            whileHover={{ x: 5 }}
-            whileTap={{ scale: 0.95 }}
           >
-            <Calendar className="w-5 h-5" />
-            <span>Book Strategy Session</span>
-            <ArrowRight className="w-5 h-5" />
-          </motion.a>
-
-          {/* Subtitle */}
-          <motion.p
-            className="text-gray-600 mt-6 max-w-2xl mx-auto"
-            style={{
-              fontFamily: "'Manrope', sans-serif",
-              fontSize: "clamp(1rem, 2vw, 1.125rem)",
-            }}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-          >
-            Ready to transform your brand's digital presence? Let's create content that your audience can't ignore.
-          </motion.p>
+            <iframe
+              src="https://cal.com/adverzeo/strategy"
+              width="100%"
+              height="700"
+              frameBorder="0"
+              className="rounded-2xl shadow-2xl"
+              title="Book Strategy Session"
+            />
+          </motion.div>
         </motion.div>
       </div>
     </div>
