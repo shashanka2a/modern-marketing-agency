@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { ImagePreloader } from "./ImagePreloader";
+import Image from "next/image";
 
 const brands = [
   { name: "Awedeet", logo: "/brands/awedeet-01.png" },
@@ -71,7 +71,7 @@ export function BrandsSection() {
                   transition={{ duration: 0.6, delay: index * 0.05 }}
                 >
                   <div className="w-40 h-20 sm:w-48 sm:h-24 relative grayscale hover:grayscale-0 transition-all duration-300 opacity-40 hover:opacity-80 mx-4">
-                    <ImagePreloader
+                    <Image
                       src={brand.logo}
                       alt={brand.name}
                       width={192}
@@ -92,7 +92,7 @@ export function BrandsSection() {
                   transition={{ duration: 0.6, delay: (index + brands.length) * 0.05 }}
                 >
                   <div className="w-40 h-20 sm:w-48 sm:h-24 relative grayscale hover:grayscale-0 transition-all duration-300 opacity-40 hover:opacity-80 mx-4">
-                    <ImagePreloader
+                    <Image
                       src={brand.logo}
                       alt={brand.name}
                       width={192}
