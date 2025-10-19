@@ -41,7 +41,7 @@ const projects = [
     title: "Nostalgia Bakery",
     category: "Foot Traffic",
     video: "/projects/Nostalgia Bakery _ 25_ Increased Footfall.mp4",
-    metric: "25% Increased Footfall",
+    metric: "25% Footfall Up",
     posts: "in 3 Posts",
     icon: "📈",
     instagramLink: "https://www.instagram.com/reel/DIN7z4fIKPp/?igsh=eWx5andsaDY3ejY5",
