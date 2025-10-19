@@ -22,16 +22,15 @@ export function BookingSection() {
             className="text-white mb-8 sm:mb-12"
             style={{
               fontFamily: "'DM Serif Display', serif",
-              fontSize: "clamp(2.5rem, 6vw, 5rem)",
+              fontSize: "clamp(2rem, 5vw, 4rem)",
               lineHeight: "1.1",
-              letterSpacing: "-0.02em",
             }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            MAKE YOURSELF A VICTIM OF ENGAGEMENT
+            Make Yourself a Victim of Engagement
           </motion.h2>
 
           {/* CTA Button */}
