@@ -109,7 +109,7 @@ export function HeroSection() {
             className="text-gray-900 mb-16 sm:mb-20 text-center px-4"
             style={{
               fontFamily: "Helvetica, Arial, sans-serif",
-              fontSize: "clamp(3rem, 10vw, 8rem)",
+              fontSize: "clamp(4rem, 12vw, 10rem)",
               lineHeight: "1.05",
               letterSpacing: "-0.03em",
             }}
