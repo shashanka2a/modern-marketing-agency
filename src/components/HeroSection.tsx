@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
-import { Zap, Sparkles, TrendingUp, Award } from "lucide-react";
+import { Zap } from "lucide-react";
 import { ViralIllustration } from "./CustomIllustrations";
 import Image from "next/image";
 
@@ -60,53 +60,6 @@ export function HeroSection() {
           }}
         />
       </div>
-
-      {/* Floating icons */}
-      <motion.div
-        className="absolute top-1/4 left-[10%] text-[#e33c25] opacity-20"
-        animate={{
-          y: [0, -20, 0],
-          rotate: [0, 10, 0],
-        }}
-        transition={{
-          duration: 6,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      >
-        <Sparkles className="w-12 h-12" />
-      </motion.div>
-
-      <motion.div
-        className="absolute bottom-1/4 right-[15%] text-[#e33c25] opacity-20"
-        animate={{
-          y: [0, 20, 0],
-          rotate: [0, -10, 0],
-        }}
-        transition={{
-          duration: 5,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 1,
-        }}
-      >
-        <TrendingUp className="w-16 h-16" />
-      </motion.div>
-
-      <motion.div
-        className="absolute top-[15%] right-[20%] text-[#e33c25] opacity-15"
-        animate={{
-          scale: [1, 1.2, 1],
-          rotate: [0, 180, 360],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      >
-        <Award className="w-10 h-10" />
-      </motion.div>
 
       {/* Custom illustration */}
       <motion.div
