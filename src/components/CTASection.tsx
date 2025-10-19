@@ -2,101 +2,11 @@
 
 import { motion } from "motion/react";
 import { MagneticButton } from "./MagneticButton";
-import { Sparkles, Rocket, Star } from "lucide-react";
+import { Sparkles } from "lucide-react";
 
 export function CTASection() {
   return (
     <div className="bg-white py-16 sm:py-24 lg:py-32 px-4 sm:px-6 relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Animated grid */}
-        <motion.div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage: `
-              linear-gradient(to right, #e33c25 1px, transparent 1px),
-              linear-gradient(to bottom, #e33c25 1px, transparent 1px)
-            `,
-            backgroundSize: "50px 50px",
-          }}
-          animate={{ backgroundPosition: ["0px 0px", "50px 50px"] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        />
-
-        {/* Gradient orbs */}
-        <motion.div
-          className="absolute top-0 left-1/4 w-96 h-96 bg-[#e33c25] rounded-full blur-[150px] opacity-20"
-          animate={{
-            scale: [1, 1.3, 1],
-            x: [-20, 20, -20],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-
-        <motion.div
-          className="absolute bottom-0 right-1/4 w-72 h-72 bg-[#e33c25] rounded-full blur-[120px] opacity-15"
-          animate={{
-            scale: [1, 1.2, 1],
-            y: [-20, 20, -20],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1,
-          }}
-        />
-
-        {/* Floating icons */}
-        <motion.div
-          className="absolute top-1/4 left-[15%] text-[#e33c25] opacity-10"
-          animate={{
-            y: [0, -30, 0],
-            rotate: [0, 180, 360],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        >
-          <Sparkles className="w-16 h-16" />
-        </motion.div>
-
-        <motion.div
-          className="absolute bottom-1/4 right-[10%] text-[#e33c25] opacity-10"
-          animate={{
-            y: [0, 30, 0],
-            rotate: [0, -180, -360],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        >
-          <Rocket className="w-20 h-20" />
-        </motion.div>
-
-        <motion.div
-          className="absolute top-1/2 right-[25%] text-[#e33c25] opacity-10"
-          animate={{
-            scale: [1, 1.5, 1],
-            rotate: [0, 360],
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        >
-          <Star className="w-12 h-12" />
-        </motion.div>
-      </div>
 
       <div className="max-w-4xl mx-auto text-center relative z-10">
         <motion.div
