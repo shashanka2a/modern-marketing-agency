@@ -29,7 +29,21 @@ export function BookingSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Make Yourself a Victim of Engagement
+            Make Yourself a Victim of{" "}
+            <motion.span
+              className="inline-block relative"
+              whileInView={{ rotate: [0, -2, 2, 0] }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <span className="relative z-10">Engagement</span>
+              <motion.span
+                className="absolute -bottom-2 left-0 right-0 h-3 bg-[#e33c25] opacity-20 rounded"
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              />
+            </motion.span>
           </motion.h2>
 
           {/* Calendly iframe */}
