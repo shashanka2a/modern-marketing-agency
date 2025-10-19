@@ -11,7 +11,9 @@ const projects = [
     title: "The Bandstand Pantry",
     category: "Content Strategy",
     video: "/projects/The Bandstand Pantry _ 10M views.mp4",
-    views: "10M",
+    metric: "10M+ Views",
+    posts: "in 8 Posts",
+    icon: "👁",
     instagramLink: "https://www.instagram.com/reel/DAbCldyM5p5/?igsh=MWlvMXhobnp5cW9tag%3D%3D",
   },
   {
@@ -19,7 +21,9 @@ const projects = [
     title: "Nostalgia Bakery",
     category: "Brand Growth",
     video: "/projects/Nostalgia Bakery _ 990k Views.mp4",
-    views: "990K",
+    metric: "990K Views",
+    posts: "in 6 Posts",
+    icon: "👁",
     instagramLink: "https://www.instagram.com/reel/DM5OZtptNoS/?igsh=MTA3djBvYnRocG5ydg%3D%3D",
   },
   {
@@ -27,7 +31,9 @@ const projects = [
     title: "The Bandstand Pantry",
     category: "Collaboration",
     video: "/projects/Swiggy India x TBP Collaboration.mp4",
-    views: "Viral",
+    metric: "Viral Campaign",
+    posts: "Brand Partnership",
+    icon: "🤝",
     instagramLink: "https://www.instagram.com/reel/C8tY59JouWe/?igsh=MWVqNGZ2dDhtYWY4dA%3D%3D",
   },
   {
@@ -35,7 +41,9 @@ const projects = [
     title: "Nostalgia Bakery",
     category: "Foot Traffic",
     video: "/projects/Nostalgia Bakery _ 25_ Increased Footfall.mp4",
-    views: "25%",
+    metric: "25% Increased Footfall",
+    posts: "in 3 Posts",
+    icon: "📈",
     instagramLink: "https://www.instagram.com/reel/DIN7z4fIKPp/?igsh=eWx5andsaDY3ejY5",
   },
   {
@@ -43,7 +51,9 @@ const projects = [
     title: "The Bandstand Pantry",
     category: "Engagement",
     video: "/projects/The Bandstand Pantry _ 2M+ Views.mp4",
-    views: "2M+",
+    metric: "2M+ Views",
+    posts: "in 4 Posts",
+    icon: "👁",
     instagramLink: "https://www.instagram.com/reel/DMUe8UYI66z/?igsh=c2Z0YmVlZWo0bnNy",
   },
   {
@@ -51,7 +61,9 @@ const projects = [
     title: "The Bandstand Pantry",
     category: "Viral Marketing",
     video: "/projects/The Bandstand Pantry _ 2M+ Views.mp4",
-    views: "2M+",
+    metric: "2M+ Views",
+    posts: "in 5 Posts",
+    icon: "👁",
     instagramLink: "https://www.instagram.com/reel/Cy52PVJM7ri/?igsh=MTZtajJueTNmYmQzbg==",
   },
 ];
@@ -201,46 +213,63 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
           />
         </motion.div>
 
-        {/* Content Section Below Video */}
+        {/* Content Section Below Video - StatsSection Style */}
         <motion.div
-          className="mt-4 p-4"
+          className="mt-4 p-6 bg-gray-800 rounded-lg"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: index * 0.1 }}
         >
-          {/* Category */}
-          <motion.p
-            className="text-[#e33c25] mb-2"
-            style={{
-              fontFamily: "'Manrope', sans-serif",
-              fontSize: "0.875rem",
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-            }}
-          >
-            {project.category}
-          </motion.p>
+          {/* Icon and Category */}
+          <div className="flex items-center gap-3 mb-3">
+            <span className="text-2xl">{project.icon}</span>
+            <motion.p
+              className="text-gray-400 text-sm uppercase tracking-wider"
+              style={{
+                fontFamily: "'Manrope', sans-serif",
+              }}
+            >
+              {project.category}
+            </motion.p>
+          </div>
 
           {/* Title */}
           <motion.h3
-            className="text-gray-900 mb-2"
+            className="text-white text-lg font-semibold mb-3"
             style={{
-              fontFamily: "'DM Serif Display', serif",
-              fontSize: "clamp(1.25rem, 2vw, 1.5rem)",
-              lineHeight: "1.2",
+              fontFamily: "'Manrope', sans-serif",
             }}
           >
             {project.title}
           </motion.h3>
 
+          {/* Metric */}
+          <motion.div
+            className="text-white text-3xl font-bold mb-2"
+            style={{
+              fontFamily: "'DM Serif Display', serif",
+            }}
+          >
+            {project.metric}
+          </motion.div>
+
+          {/* Posts */}
+          <motion.p
+            className="text-gray-400 text-sm mb-4"
+            style={{
+              fontFamily: "'Manrope', sans-serif",
+            }}
+          >
+            {project.posts}
+          </motion.p>
 
           {/* View project button */}
           <motion.a
             href={project.instagramLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-[#e33c25] text-sm hover:text-gray-900 transition-colors"
+            className="inline-flex items-center gap-2 text-[#e33c25] text-sm hover:text-white transition-colors"
             style={{ fontFamily: "'Manrope', sans-serif" }}
             whileHover={{ x: 5 }}
           >
