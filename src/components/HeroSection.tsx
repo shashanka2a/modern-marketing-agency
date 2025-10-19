@@ -187,7 +187,7 @@ export function HeroSection() {
               transition={{ duration: 0.6, delay: 0.7 }}
             >
               <motion.div
-                className="flex flex-col"
+                className="flex flex-col items-center"
                 animate={{ y: [0, -100, -200, -300, 0] }}
                 transition={{ 
                   duration: 4, 
@@ -196,10 +196,10 @@ export function HeroSection() {
                   delay: 1.5
                 }}
               >
-                <span className="h-[1.1em] flex items-center">Persuasion</span>
-                <span className="h-[1.1em] flex items-center">Storytelling</span>
-                <span className="h-[1.1em] flex items-center">Strategy</span>
-                <span className="h-[1.1em] flex items-center">Creativity</span>
+                <span className="h-[1.1em] flex items-center justify-center">Persuasion</span>
+                <span className="h-[1.1em] flex items-center justify-center">Storytelling</span>
+                <span className="h-[1.1em] flex items-center justify-center">Strategy</span>
+                <span className="h-[1.1em] flex items-center justify-center">Creativity</span>
               </motion.div>
             </motion.span>
           </motion.h1>
