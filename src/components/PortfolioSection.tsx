@@ -179,52 +179,39 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
             />
           </motion.div>
 
-          {/* Video Info Overlay - YouTube Shorts Style */}
-          <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+          {/* Video Info Overlay - Reference Style */}
+          <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 via-black/60 to-transparent">
             <div className="flex items-end justify-between">
               <div className="flex-1">
-                <h3 className="text-white font-semibold text-lg mb-1 line-clamp-2">
+                <h3 
+                  className="text-white font-semibold text-xl mb-2"
+                  style={{ fontFamily: "'Manrope', sans-serif" }}
+                >
                   {project.title}
                 </h3>
-                <p className="text-gray-300 text-sm mb-2">
-                  {project.metric} • {project.posts}
-                </p>
-                <p className="text-gray-400 text-xs uppercase tracking-wider">
+                <p 
+                  className="text-gray-300 text-sm mb-1"
+                  style={{ fontFamily: "'Manrope', sans-serif" }}
+                >
                   {project.category}
                 </p>
+                <p 
+                  className="text-white text-lg font-semibold"
+                  style={{ fontFamily: "'Manrope', sans-serif" }}
+                >
+                  {project.metric} in {project.posts}
+                </p>
               </div>
-              <div className="flex flex-col items-center gap-3 ml-4">
+              <div className="ml-4">
                 <button 
-                  className="w-12 h-12 bg-black/50 rounded-full flex items-center justify-center hover:bg-black/70 transition-colors"
+                  className="w-12 h-12 bg-[#e33c25] rounded-full flex items-center justify-center hover:bg-[#c42d1a] transition-colors"
                   onClick={(e) => {
                     e.stopPropagation();
-                    // Like button functionality
-                  }}
-                >
-                  <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                  </svg>
-                </button>
-                <button 
-                  className="w-12 h-12 bg-black/50 rounded-full flex items-center justify-center hover:bg-black/70 transition-colors"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    // Comment button functionality
+                    window.open(project.instagramLink, '_blank');
                   }}
                 >
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                  </svg>
-                </button>
-                <button 
-                  className="w-12 h-12 bg-black/50 rounded-full flex items-center justify-center hover:bg-black/70 transition-colors"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    // Share button functionality
-                  }}
-                >
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                   </svg>
                 </button>
               </div>

@@ -3,13 +3,11 @@
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef, useState } from "react";
 import { BrandStrategyIllustration, CreativeProductionIllustration } from "./CustomIllustrations";
+import { Lightbulb } from "lucide-react";
 
 // Custom Icons
 const LightbulbIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M9 21h6M12 3a5 5 0 0 1 5 5c0 2.36-1.5 4.5-1.5 4.5H8.5S7 10.36 7 8a5 5 0 0 1 5-5z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M12 17v-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
+  <Lightbulb className="w-6 h-6" />
 );
 
 const FilmIcon = () => (
@@ -175,7 +173,7 @@ export function AboutSection() {
               >
                 {/* Brand colored card */}
                 <motion.div
-                  className="relative bg-gradient-to-br from-[#e33c25] to-[#c42d1a] p-6 sm:p-8 lg:p-10 rounded-3xl overflow-hidden"
+                  className="relative bg-gradient-to-br from-[#e33c25] to-[#c42d1a] p-6 sm:p-8 lg:p-10 rounded-3xl overflow-hidden border-2 border-black"
                   animate={{
                     scale: isHovered ? 1.02 : 1,
                   }}
@@ -207,7 +205,7 @@ export function AboutSection() {
                         }}
                         transition={{ type: "spring", stiffness: 300 }}
                       >
-                        <div className="w-16 h-16 sm:w-20 sm:h-20 bg-black rounded-2xl flex items-center justify-center shadow-lg">
+                        <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gray-800 rounded-2xl flex items-center justify-center shadow-lg border border-gray-700">
                           <div className="text-4xl sm:text-5xl text-white drop-shadow-lg">
                             <service.icon />
                           </div>
