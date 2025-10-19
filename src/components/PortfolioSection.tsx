@@ -453,29 +453,6 @@ export function PortfolioSection() {
           </div>
         </div>
 
-        {/* View all projects CTA */}
-        <motion.div
-          className="mt-12 sm:mt-16 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          <motion.button
-            className="px-8 py-4 bg-black text-white rounded-xl relative overflow-hidden group"
-            style={{ fontFamily: "'Manrope', sans-serif" }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <motion.span
-              className="absolute inset-0 bg-[#e33c25]"
-              initial={{ x: "-100%" }}
-              whileHover={{ x: 0 }}
-              transition={{ duration: 0.3 }}
-            />
-            <span className="relative z-10">View All Projects</span>
-          </motion.button>
-        </motion.div>
       </div>
     </div>
   );

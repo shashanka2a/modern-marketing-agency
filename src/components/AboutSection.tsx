@@ -207,8 +207,8 @@ export function AboutSection() {
                         }}
                         transition={{ type: "spring", stiffness: 300 }}
                       >
-                        <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-[#e33c25]/10 via-[#e33c25]/5 to-transparent rounded-2xl flex items-center justify-center shadow-lg">
-                          <div className="text-4xl sm:text-5xl text-white">
+                        <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-[#e33c25]/20 via-[#e33c25]/10 to-[#e33c25]/5 rounded-2xl flex items-center justify-center shadow-lg">
+                          <div className="text-4xl sm:text-5xl text-white drop-shadow-lg">
                             <service.icon />
                           </div>
                         </div>
