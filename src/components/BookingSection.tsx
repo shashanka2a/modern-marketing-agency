@@ -29,7 +29,7 @@ export function BookingSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Make Yourself a Victim of{" "}
+            <span className="block">Make Yourself a Victim of</span>
             <motion.span
               className="inline-block relative"
               whileInView={{ rotate: [0, -2, 2, 0] }}

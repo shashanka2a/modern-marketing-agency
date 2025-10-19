@@ -18,7 +18,7 @@ export function HeroSection() {
   const scale = useTransform(scrollYProgress, [0, 0.8], [1, 0.98]);
 
   return (
-    <div ref={containerRef} className="relative overflow-hidden bg-[#000000] min-h-screen flex items-center justify-center px-4 sm:px-6">
+    <div ref={containerRef} className="relative overflow-hidden bg-white min-h-screen flex items-center justify-center px-4 sm:px-6">
       {/* Animated mesh gradient background */}
       <div className="absolute inset-0">
         <motion.div
@@ -153,7 +153,7 @@ export function HeroSection() {
 
           {/* Main headline with scrolling text effect */}
           <motion.h1
-            className="text-white mb-8 sm:mb-12 text-center"
+            className="text-gray-900 mb-8 sm:mb-12 text-center"
             style={{
               fontFamily: "Helvetica, Arial, sans-serif",
               fontSize: "clamp(2.5rem, 8vw, 6.5rem)",
@@ -167,15 +167,7 @@ export function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              The Art
-            </motion.span>
-            <motion.span
-              className="block"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-            >
-              Of
+              The Art Of
             </motion.span>
             <motion.span
               className="block relative overflow-hidden h-[1.1em]"
@@ -193,16 +185,16 @@ export function HeroSection() {
                   delay: 1.5
                 }}
               >
-                <span className="h-[1.1em] flex items-center justify-center italic">Persuasion</span>
-                <span className="h-[1.1em] flex items-center justify-center italic">Storytelling</span>
-                <span className="h-[1.1em] flex items-center justify-center italic">Strategy</span>
-                <span className="h-[1.1em] flex items-center justify-center italic">Creativity</span>
+                <span className="h-[1.1em] flex items-center justify-center italic text-[#e33c25]">Persuasion</span>
+                <span className="h-[1.1em] flex items-center justify-center italic text-[#e33c25]">Storytelling</span>
+                <span className="h-[1.1em] flex items-center justify-center italic text-[#e33c25]">Strategy</span>
+                <span className="h-[1.1em] flex items-center justify-center italic text-[#e33c25]">Creativity</span>
               </motion.div>
             </motion.span>
           </motion.h1>
 
           <motion.p
-            className="text-gray-200 max-w-3xl mx-auto mb-8 sm:mb-12 px-4"
+            className="text-gray-600 max-w-3xl mx-auto mb-8 sm:mb-12 px-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.9 }}
