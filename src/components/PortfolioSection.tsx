@@ -22,7 +22,7 @@ const projects = [
     category: "Brand Growth",
     video: "/projects/Nostalgia Bakery _ 990k Views.mp4",
     metric: "990K Views",
-    posts: "in 6 Posts",
+    posts: "",
     icon: "👁",
     instagramLink: "https://www.instagram.com/reel/DM5OZtptNoS/?igsh=MTA3djBvYnRocG5ydg%3D%3D",
   },
@@ -32,7 +32,7 @@ const projects = [
     category: "Collaboration",
     video: "/projects/Swiggy India x TBP Collaboration.mp4",
     metric: "Viral Campaign",
-    posts: "Brand Partnership",
+    posts: "",
     icon: "🤝",
     instagramLink: "https://www.instagram.com/reel/C8tY59JouWe/?igsh=MWVqNGZ2dDhtYWY4dA%3D%3D",
   },
@@ -199,7 +199,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
                   className="text-white text-lg font-semibold"
                   style={{ fontFamily: "'Manrope', sans-serif" }}
                 >
-                  {project.posts.includes('in ') ? `${project.metric} ${project.posts}` : `${project.metric} in ${project.posts}`}
+                  {project.posts ? (project.posts.includes('in ') ? `${project.metric} ${project.posts}` : `${project.metric} in ${project.posts}`) : project.metric}
                 </p>
               </div>
               <div className="ml-4">
