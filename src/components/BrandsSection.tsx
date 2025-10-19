@@ -60,53 +60,51 @@ export function BrandsSection() {
         {/* Scrolling brands */}
         <div className="relative overflow-hidden">
           <div className="flex animate-scroll">
-              {/* First set of brands */}
-              {brands.map((brand, index) => (
-                <motion.div
-                  key={`first-${index}`}
-                  className="flex-shrink-0 flex items-center justify-center"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.05 }}
-                >
-                  <div className="w-40 h-20 sm:w-48 sm:h-24 relative grayscale hover:grayscale-0 transition-all duration-300 opacity-40 hover:opacity-80 mx-4">
-                    <Image
-                      src={brand.logo}
-                      alt={brand.name}
-                      width={192}
-                      height={96}
-                      className="w-full h-full object-contain p-2"
-                    />
-                  </div>
-                </motion.div>
-              ))}
-              {/* Duplicate set for seamless loop */}
-              {brands.map((brand, index) => (
-                <motion.div
-                  key={`second-${index}`}
-                  className="flex-shrink-0 flex items-center justify-center"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: (index + brands.length) * 0.05 }}
-                >
-                  <div className="w-40 h-20 sm:w-48 sm:h-24 relative grayscale hover:grayscale-0 transition-all duration-300 opacity-40 hover:opacity-80 mx-4">
-                    <Image
-                      src={brand.logo}
-                      alt={brand.name}
-                      width={192}
-                      height={96}
-                      className="w-full h-full object-contain p-2"
-                    />
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+            {/* First set of brands */}
+            {brands.map((brand, index) => (
+              <motion.div
+                key={`first-${index}`}
+                className="flex-shrink-0 flex items-center justify-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.05 }}
+              >
+                <div className="w-40 h-20 sm:w-48 sm:h-24 relative grayscale hover:grayscale-0 transition-all duration-300 opacity-40 hover:opacity-80 mx-4">
+                  <Image
+                    src={brand.logo}
+                    alt={brand.name}
+                    width={192}
+                    height={96}
+                    className="w-full h-full object-contain p-2"
+                  />
+                </div>
+              </motion.div>
+            ))}
+            {/* Duplicate set for seamless loop */}
+            {brands.map((brand, index) => (
+              <motion.div
+                key={`second-${index}`}
+                className="flex-shrink-0 flex items-center justify-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: (index + brands.length) * 0.05 }}
+              >
+                <div className="w-40 h-20 sm:w-48 sm:h-24 relative grayscale hover:grayscale-0 transition-all duration-300 opacity-40 hover:opacity-80 mx-4">
+                  <Image
+                    src={brand.logo}
+                    alt={brand.name}
+                    width={192}
+                    height={96}
+                    className="w-full h-full object-contain p-2"
+                  />
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>
-
     </div>
   );
 }
