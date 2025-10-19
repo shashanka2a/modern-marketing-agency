@@ -45,7 +45,7 @@ export function BrandsSection() {
           className="text-center mb-12"
         >
           <h2
-            className="text-gray-900 mb-4"
+            className="text-gray-900 mb-4 font-bold"
             style={{
               fontFamily: "'Manrope', sans-serif",
               fontSize: "clamp(1.5rem, 3vw, 2rem)",
