@@ -5,6 +5,7 @@ import { useState, useRef } from "react";
 import { Zap, Sparkles, TrendingUp, Award } from "lucide-react";
 import { MagneticButton } from "./MagneticButton";
 import { ViralIllustration } from "./CustomIllustrations";
+import Image from "next/image";
 
 export function HeroSection() {
   const [email, setEmail] = useState("");
@@ -136,36 +137,24 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="mb-8 sm:mb-12"
         >
-          {/* Animated logo badge */}
+          {/* Logo */}
           <motion.div
-            className="inline-flex items-center gap-2 mb-6 sm:mb-8 px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10"
+            className="mb-8 sm:mb-12"
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ type: "spring", stiffness: 200, delay: 0.1 }}
           >
-            <motion.div
-              animate={{ rotate: [0, 360] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-            >
-              <Zap className="w-5 h-5 sm:w-6 sm:h-6 text-[#e33c25]" />
-            </motion.div>
-            <span
-              className="text-white tracking-wider"
-              style={{
-                fontFamily: "'Manrope', sans-serif",
-                fontSize: "clamp(0.875rem, 1.5vw, 1rem)",
-              }}
-            >
-              ADVERZEO
-            </span>
-            <motion.div
-              className="w-2 h-2 rounded-full bg-[#e33c25]"
-              animate={{ opacity: [0.3, 1, 0.3] }}
-              transition={{ duration: 2, repeat: Infinity }}
+            <Image
+              src="/adverzeo.png"
+              alt="Adverzeo"
+              width={300}
+              height={90}
+              className="h-16 w-auto mx-auto"
+              priority
             />
           </motion.div>
 
-          {/* Main headline with stagger effect */}
+          {/* Main headline with scrolling text effect */}
           <motion.h1
             className="text-white mb-4 sm:mb-6 px-4"
             style={{
@@ -176,34 +165,42 @@ export function HeroSection() {
             }}
           >
             <motion.span
-              className="inline-block"
+              className="block"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              The Agency Behind
+              The Art
             </motion.span>
-            <br />
             <motion.span
-              className="inline-block relative"
+              className="block"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
-              <span className="relative z-10">Millions of Views</span>
-              <motion.span
-                className="absolute inset-0 bg-gradient-to-r from-[#e33c25] to-transparent opacity-20 blur-xl"
-                animate={{ opacity: [0.2, 0.4, 0.2] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              />
+              Of
             </motion.span>
             <motion.span
-              className="inline-block text-[#e33c25]"
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ type: "spring", stiffness: 200, delay: 0.7 }}
+              className="block relative overflow-hidden h-[1.1em]"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
             >
-              .
+              <motion.div
+                className="flex flex-col"
+                animate={{ y: [0, -100, -200, -300, 0] }}
+                transition={{ 
+                  duration: 4, 
+                  repeat: Infinity, 
+                  ease: "easeInOut",
+                  delay: 1.5
+                }}
+              >
+                <span className="h-[1.1em] flex items-center">Persuasion</span>
+                <span className="h-[1.1em] flex items-center">Storytelling</span>
+                <span className="h-[1.1em] flex items-center">Strategy</span>
+                <span className="h-[1.1em] flex items-center">Creativity</span>
+              </motion.div>
             </motion.span>
           </motion.h1>
 
