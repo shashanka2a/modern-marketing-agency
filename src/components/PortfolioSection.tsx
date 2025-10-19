@@ -127,9 +127,9 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
       style={{ perspective: "1000px" }}
     >
       <div className="flex flex-col">
-        {/* Video Section */}
+        {/* Video Section - YouTube Shorts Style */}
         <motion.div
-          className="relative overflow-hidden rounded-3xl aspect-[4/5] cursor-pointer bg-gray-900 w-full"
+          className="relative overflow-hidden rounded-2xl aspect-[9/16] cursor-pointer bg-gray-900 w-full"
           style={{
             rotateX: isHovered ? rotateX : 0,
             rotateY: isHovered ? rotateY : 0,
@@ -137,6 +137,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
           }}
           whileHover={{ scale: 1.02 }}
           transition={{ duration: 0.4 }}
+          onClick={() => window.open(project.instagramLink, '_blank')}
         >
           {/* Video with parallax effect */}
           <motion.div
@@ -178,20 +179,57 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
             />
           </motion.div>
 
-          {/* Views badge */}
-          <motion.div
-            className="absolute top-4 right-4 px-4 py-2 rounded-full bg-black/80 backdrop-blur-md border border-white/30"
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            transition={{ delay: 0.3 + index * 0.05, type: "spring" }}
-          >
-            <span
-              className="text-white text-sm font-semibold"
-              style={{ fontFamily: "'Manrope', sans-serif" }}
-            >
-              👁 {project.views}
-            </span>
-          </motion.div>
+          {/* Video Info Overlay - YouTube Shorts Style */}
+          <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+            <div className="flex items-end justify-between">
+              <div className="flex-1">
+                <h3 className="text-white font-semibold text-lg mb-1 line-clamp-2">
+                  {project.title}
+                </h3>
+                <p className="text-gray-300 text-sm mb-2">
+                  {project.metric} • {project.posts}
+                </p>
+                <p className="text-gray-400 text-xs uppercase tracking-wider">
+                  {project.category}
+                </p>
+              </div>
+              <div className="flex flex-col items-center gap-3 ml-4">
+                <button 
+                  className="w-12 h-12 bg-black/50 rounded-full flex items-center justify-center hover:bg-black/70 transition-colors"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    // Like button functionality
+                  }}
+                >
+                  <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                  </svg>
+                </button>
+                <button 
+                  className="w-12 h-12 bg-black/50 rounded-full flex items-center justify-center hover:bg-black/70 transition-colors"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    // Comment button functionality
+                  }}
+                >
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                  </svg>
+                </button>
+                <button 
+                  className="w-12 h-12 bg-black/50 rounded-full flex items-center justify-center hover:bg-black/70 transition-colors"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    // Share button functionality
+                  }}
+                >
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
 
           {/* Glow effect on hover */}
           <motion.div
@@ -213,70 +251,6 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
           />
         </motion.div>
 
-        {/* Content Section Below Video - StatsSection Style */}
-        <motion.div
-          className="mt-4 p-6 bg-gray-800 rounded-lg"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: index * 0.1 }}
-        >
-          {/* Icon and Category */}
-          <div className="flex items-center gap-3 mb-3">
-            <span className="text-2xl">{project.icon}</span>
-            <motion.p
-              className="text-gray-400 text-sm uppercase tracking-wider"
-              style={{
-                fontFamily: "'Manrope', sans-serif",
-              }}
-            >
-              {project.category}
-            </motion.p>
-          </div>
-
-          {/* Title */}
-          <motion.h3
-            className="text-white text-lg font-semibold mb-3"
-            style={{
-              fontFamily: "'Manrope', sans-serif",
-            }}
-          >
-            {project.title}
-          </motion.h3>
-
-          {/* Metric */}
-          <motion.div
-            className="text-white text-3xl font-bold mb-2"
-            style={{
-              fontFamily: "'DM Serif Display', serif",
-            }}
-          >
-            {project.metric}
-          </motion.div>
-
-          {/* Posts */}
-          <motion.p
-            className="text-gray-400 text-sm mb-4"
-            style={{
-              fontFamily: "'Manrope', sans-serif",
-            }}
-          >
-            {project.posts}
-          </motion.p>
-
-          {/* View project button */}
-          <motion.a
-            href={project.instagramLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-[#e33c25] text-sm hover:text-white transition-colors"
-            style={{ fontFamily: "'Manrope', sans-serif" }}
-            whileHover={{ x: 5 }}
-          >
-            <span>View on Instagram</span>
-            <ExternalLink className="w-4 h-4" />
-          </motion.a>
-        </motion.div>
       </div>
     </motion.div>
   );
