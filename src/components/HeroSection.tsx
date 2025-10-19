@@ -1,15 +1,12 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "motion/react";
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import { Zap, Sparkles, TrendingUp, Award } from "lucide-react";
-import { MagneticButton } from "./MagneticButton";
 import { ViralIllustration } from "./CustomIllustrations";
 import Image from "next/image";
 
 export function HeroSection() {
-  const [email, setEmail] = useState("");
-  const [isFocused, setIsFocused] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -156,9 +153,9 @@ export function HeroSection() {
 
           {/* Main headline with scrolling text effect */}
           <motion.h1
-            className="text-white mb-4 sm:mb-6 text-center"
+            className="text-white mb-8 sm:mb-12 text-center"
             style={{
-              fontFamily: "'DM Serif Display', serif",
+              fontFamily: "Helvetica, Arial, sans-serif",
               fontSize: "clamp(2.5rem, 8vw, 6.5rem)",
               lineHeight: "1.1",
               letterSpacing: "-0.02em",
@@ -196,10 +193,10 @@ export function HeroSection() {
                   delay: 1.5
                 }}
               >
-                <span className="h-[1.1em] flex items-center justify-center">Persuasion</span>
-                <span className="h-[1.1em] flex items-center justify-center">Storytelling</span>
-                <span className="h-[1.1em] flex items-center justify-center">Strategy</span>
-                <span className="h-[1.1em] flex items-center justify-center">Creativity</span>
+                <span className="h-[1.1em] flex items-center justify-center italic">Persuasion</span>
+                <span className="h-[1.1em] flex items-center justify-center italic">Storytelling</span>
+                <span className="h-[1.1em] flex items-center justify-center italic">Strategy</span>
+                <span className="h-[1.1em] flex items-center justify-center italic">Creativity</span>
               </motion.div>
             </motion.span>
           </motion.h1>
@@ -220,54 +217,6 @@ export function HeroSection() {
           </motion.p>
         </motion.div>
 
-        {/* Enhanced CTA form */}
-        <motion.form
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.1 }}
-          className="flex flex-col sm:flex-row gap-3 sm:gap-4 max-w-xl mx-auto px-4"
-          onSubmit={(e) => e.preventDefault()}
-        >
-          <motion.div
-            className="flex-1 relative"
-            animate={{ 
-              boxShadow: isFocused 
-                ? "0 0 0 2px rgba(227, 60, 37, 0.3)" 
-                : "0 0 0 0px rgba(227, 60, 37, 0)"
-            }}
-            style={{ borderRadius: "12px" }}
-          >
-            <input
-              type="email"
-              placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              onFocus={() => setIsFocused(true)}
-              onBlur={() => setIsFocused(false)}
-              aria-label="Email address"
-              className="w-full px-5 sm:px-6 py-3.5 sm:py-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-400 backdrop-blur-md focus:outline-none focus:border-[#e33c25] transition-all duration-300 min-h-[48px]"
-              style={{ fontFamily: "'Manrope', sans-serif" }}
-            />
-          </motion.div>
-
-          <MagneticButton
-            className="px-6 sm:px-8 py-3.5 sm:py-4 bg-[#e33c25] text-white rounded-xl min-h-[48px] whitespace-nowrap relative overflow-hidden group"
-            onClick={() => console.log("Book a call")}
-          >
-            <motion.span
-              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-              initial={{ x: "-100%" }}
-              whileHover={{ x: "100%" }}
-              transition={{ duration: 0.6 }}
-            />
-            <span
-              className="relative z-10"
-              style={{ fontFamily: "'Manrope', sans-serif" }}
-            >
-              Book a Call
-            </span>
-          </MagneticButton>
-        </motion.form>
 
         {/* Social proof badges */}
         <motion.div
