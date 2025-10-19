@@ -35,7 +35,7 @@ const brands = [
 
 export function BrandsSection() {
   return (
-    <div className="bg-black py-16 px-4 sm:px-6 relative overflow-hidden">
+    <div className="bg-white py-16 px-4 sm:px-6 relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -45,7 +45,7 @@ export function BrandsSection() {
           className="text-center mb-12"
         >
           <h2
-            className="text-white mb-4"
+            className="text-gray-900 mb-4"
             style={{
               fontFamily: "'Manrope', sans-serif",
               fontSize: "clamp(1.5rem, 3vw, 2rem)",
@@ -70,7 +70,7 @@ export function BrandsSection() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.05 }}
                 >
-                  <div className="w-32 h-16 sm:w-40 sm:h-20 relative grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100">
+                  <div className="w-32 h-16 sm:w-40 sm:h-20 relative grayscale hover:grayscale-0 transition-all duration-300 opacity-40 hover:opacity-80">
                     <Image
                       src={brand.logo}
                       alt={brand.name}
@@ -91,7 +91,7 @@ export function BrandsSection() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: (index + brands.length) * 0.05 }}
                 >
-                  <div className="w-32 h-16 sm:w-40 sm:h-20 relative grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100">
+                  <div className="w-32 h-16 sm:w-40 sm:h-20 relative grayscale hover:grayscale-0 transition-all duration-300 opacity-40 hover:opacity-80">
                     <Image
                       src={brand.logo}
                       alt={brand.name}
