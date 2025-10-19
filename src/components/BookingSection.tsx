@@ -5,9 +5,9 @@ import { Calendar, ArrowRight } from "lucide-react";
 
 export function BookingSection() {
   return (
-    <div className="bg-black py-16 sm:py-24 relative overflow-hidden">
+    <div className="bg-white py-16 sm:py-24 relative overflow-hidden">
       {/* Background pattern */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-900" />
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white" />
       
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -19,7 +19,7 @@ export function BookingSection() {
         >
           {/* Main headline */}
           <motion.h2
-            className="text-white mb-8 sm:mb-12"
+            className="text-gray-900 mb-8 sm:mb-12"
             style={{
               fontFamily: "'DM Serif Display', serif",
               fontSize: "clamp(2rem, 5vw, 4rem)",
@@ -54,7 +54,7 @@ export function BookingSection() {
 
           {/* Subtitle */}
           <motion.p
-            className="text-gray-300 mt-6 max-w-2xl mx-auto"
+            className="text-gray-600 mt-6 max-w-2xl mx-auto"
             style={{
               fontFamily: "'Manrope', sans-serif",
               fontSize: "clamp(1rem, 2vw, 1.125rem)",
