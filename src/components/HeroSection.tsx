@@ -2,7 +2,6 @@
 
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
-import { Zap } from "lucide-react";
 import { ViralIllustration } from "./CustomIllustrations";
 import Image from "next/image";
 
