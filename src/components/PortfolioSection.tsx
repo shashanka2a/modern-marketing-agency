@@ -256,6 +256,7 @@ export function PortfolioSection() {
       video.muted = true;
       video.loop = true;
       video.playsInline = true;
+      video.load(); // Force loading
     });
   }, []);
 
