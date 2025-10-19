@@ -129,9 +129,9 @@ export function HeroSection() {
             >
               <motion.div
                 className="flex flex-col items-center"
-                animate={{ y: [0, -100, -200, -300, -400, 0] }}
+                animate={{ y: [0, -100, -200, -300, 0] }}
                 transition={{ 
-                  duration: 6, 
+                  duration: 4, 
                   repeat: Infinity, 
                   ease: "linear",
                   delay: 1.5
