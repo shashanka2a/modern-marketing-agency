@@ -334,7 +334,7 @@ export function PortfolioSection() {
               whileInView={{ rotate: [0, -2, 2, 0] }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <span className="relative z-10">Work</span>
+              <span className="relative z-10">Engagement</span>
               <motion.span
                 className="absolute -bottom-2 left-0 right-0 h-3 bg-[#e33c25] opacity-20 rounded"
                 initial={{ scaleX: 0 }}
