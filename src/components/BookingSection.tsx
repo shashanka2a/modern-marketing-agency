@@ -5,8 +5,6 @@ import { motion } from "motion/react";
 export function BookingSection() {
   return (
     <div className="bg-white py-16 sm:py-24 relative overflow-hidden">
-      {/* Background pattern */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white" />
       
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

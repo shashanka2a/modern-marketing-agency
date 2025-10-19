@@ -283,7 +283,7 @@ export function PortfolioSection() {
   };
 
   return (
-    <div className="bg-gradient-to-b from-gray-50 to-white py-16 sm:py-24 lg:py-32 px-4 sm:px-6 relative overflow-hidden">
+    <div className="bg-white py-16 sm:py-24 lg:py-32 px-4 sm:px-6 relative overflow-hidden">
       {/* Decorative background elements */}
       <motion.div
         className="absolute top-1/4 left-0 w-72 h-72 bg-[#e33c25] rounded-full blur-[150px] opacity-5"

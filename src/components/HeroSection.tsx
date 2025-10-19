@@ -89,7 +89,7 @@ export function HeroSection() {
         >
           {/* Logo */}
           <motion.div
-            className="mb-8 sm:mb-12"
+            className="mb-12 sm:mb-16"
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ type: "spring", stiffness: 200, delay: 0.1 }}
@@ -106,12 +106,12 @@ export function HeroSection() {
 
           {/* Main headline with scrolling text effect */}
           <motion.h1
-            className="text-gray-900 mb-8 sm:mb-12 text-center"
+            className="text-gray-900 mb-16 sm:mb-20 text-center px-4"
             style={{
               fontFamily: "Helvetica, Arial, sans-serif",
-              fontSize: "clamp(2.5rem, 8vw, 6.5rem)",
-              lineHeight: "1.1",
-              letterSpacing: "-0.02em",
+              fontSize: "clamp(3rem, 10vw, 8rem)",
+              lineHeight: "1.05",
+              letterSpacing: "-0.03em",
             }}
           >
             <motion.span
@@ -146,27 +146,11 @@ export function HeroSection() {
             </motion.span>
           </motion.h1>
 
-          <motion.p
-            className="text-gray-600 max-w-3xl mx-auto mb-8 sm:mb-12 px-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.9 }}
-            style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              fontStyle: "italic",
-              fontSize: "clamp(1.125rem, 2.5vw, 1.75rem)",
-              lineHeight: "1.6",
-            }}
-          >
-            Our impeccable strategy helps brands go viral, achieving millions of views and global recognition.
-          </motion.p>
         </motion.div>
 
 
       </motion.div>
 
-      {/* Bottom gradient fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#000000] to-transparent" />
     </div>
   );
 }
