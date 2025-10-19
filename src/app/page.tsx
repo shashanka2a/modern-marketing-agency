@@ -3,6 +3,7 @@ import { AboutSection } from "@/components/AboutSection";
 import { StatsSection } from "@/components/StatsSection";
 import { PortfolioSection } from "@/components/PortfolioSection";
 import { BrandsSection } from "@/components/BrandsSection";
+import { BookingSection } from "@/components/BookingSection";
 import { CTASection } from "@/components/CTASection";
 import { Footer } from "@/components/Footer";
 import { AnimatedBackground } from "@/components/AnimatedBackground";
@@ -18,6 +19,7 @@ export default function Home() {
       <PortfolioSection />
       <StatsSection />
       <BrandsSection />
+      <BookingSection />
       <AboutSection />
       <CTASection />
       <Footer />
