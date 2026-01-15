@@ -29,6 +29,10 @@ export const metadata: Metadata = {
   authors: [{ name: "Adverzeo" }],
   creator: "Adverzeo",
   publisher: "Adverzeo",
+  icons: {
+    icon: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
   formatDetection: {
     email: false,
     address: false,
