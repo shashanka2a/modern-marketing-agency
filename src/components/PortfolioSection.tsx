@@ -71,6 +71,7 @@ const projects = [
 function ProjectCard({ project, index }: { project: typeof projects[0]; index: number }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [thumbnailLoaded, setThumbnailLoaded] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   
@@ -79,6 +80,36 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
   
   const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [10, -10]), { stiffness: 300, damping: 30 });
   const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-10, 10]), { stiffness: 300, damping: 30 });
+
+  // Preload video thumbnail (first frame) on mount
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const loadThumbnail = () => {
+      // Set video to load first frame
+      video.currentTime = 0;
+      video.muted = true;
+      
+      const handleLoadedData = () => {
+        // Seek to first frame to show as thumbnail
+        video.currentTime = 0.1;
+        setThumbnailLoaded(true);
+      };
+      
+      video.addEventListener('loadeddata', handleLoadedData, { once: true });
+      video.addEventListener('loadedmetadata', () => {
+        video.currentTime = 0.1;
+      }, { once: true });
+      
+      // Force load
+      video.load();
+    };
+
+    // Small delay to ensure video element is ready
+    const timer = setTimeout(loadThumbnail, 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
@@ -153,8 +184,12 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
               muted
               loop
               playsInline
-              preload="auto"
-              poster={`${project.video.replace('.mp4', '.jpg').replace('.MOV', '.jpg')}`}
+              preload="metadata"
+              onLoadedMetadata={() => {
+                if (videoRef.current) {
+                  videoRef.current.currentTime = 0.1;
+                }
+              }}
             >
               <source src={project.video} type="video/mp4" />
               Your browser does not support the video tag.
@@ -247,15 +282,21 @@ export function PortfolioSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
 
-  // Preload all videos when component mounts
+  // Preload all videos when component mounts and load first frame as thumbnail
   useEffect(() => {
     projects.forEach((project) => {
       const video = document.createElement('video');
-      video.preload = 'auto';
+      video.preload = 'metadata';
       video.src = project.video;
       video.muted = true;
       video.loop = true;
       video.playsInline = true;
+      
+      // Load first frame as thumbnail
+      video.addEventListener('loadedmetadata', () => {
+        video.currentTime = 0.1;
+      }, { once: true });
+      
       video.load(); // Force loading
     });
   }, []);

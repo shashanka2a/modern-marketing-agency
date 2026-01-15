@@ -1,8 +1,6 @@
 "use client";
 
 import { motion } from "motion/react";
-import { MagneticButton } from "./MagneticButton";
-import { Sparkles } from "lucide-react";
 
 export function CTASection() {
   return (
@@ -17,18 +15,12 @@ export function CTASection() {
         >
           {/* Animated badge */}
           <motion.div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 backdrop-blur-sm border border-gray-200 mb-8"
+            className="inline-flex items-center px-4 py-2 rounded-full bg-gray-100 backdrop-blur-sm border border-gray-200 mb-8"
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}
             viewport={{ once: true }}
             transition={{ type: "spring", stiffness: 200 }}
           >
-            <motion.div
-              animate={{ rotate: [0, 360] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-            >
-              <Sparkles className="w-4 h-4 text-[#e33c25]" />
-            </motion.div>
             <span
               className="text-gray-600 text-sm"
               style={{ fontFamily: "'Manrope', sans-serif" }}
@@ -73,7 +65,7 @@ export function CTASection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
-              {" "}— we're here to be your{" "}
+              {" "}we're here to be your{" "}
             </motion.span>
             <motion.span
               className="inline-block relative"
@@ -82,7 +74,7 @@ export function CTASection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.5 }}
             >
-              <span className="relative z-10">marketing partner</span>
+              <span className="relative z-10 text-[#e33c25]">marketing partner</span>
               <motion.span
                 className="absolute -bottom-2 left-0 right-0 h-3 bg-[#e33c25] opacity-20 rounded"
                 initial={{ scaleX: 0 }}

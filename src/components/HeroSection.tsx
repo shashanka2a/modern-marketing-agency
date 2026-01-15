@@ -114,7 +114,7 @@ export function HeroSection() {
             >
               <motion.div
                 className="flex flex-col items-center"
-                animate={{ y: [0, -100, -200, -300, 0] }}
+                animate={{ y: [0, -100, -200, -300] }}
                 transition={{ 
                   duration: 4, 
                   repeat: Infinity, 
@@ -125,7 +125,7 @@ export function HeroSection() {
                 <span className="h-[1.1em] flex items-center justify-center italic text-[#e33c25]">Persuasion</span>
                 <span className="h-[1.1em] flex items-center justify-center italic text-[#e33c25]">Storytelling</span>
                 <span className="h-[1.1em] flex items-center justify-center italic text-[#e33c25]">Strategy</span>
-                <span className="h-[1.1em] flex items-center justify-center italic text-[#e33c25]">Creativity</span>
+                <span className="h-[1.1em] flex items-center justify-center italic text-[#e33c25]">Persuasion</span>
               </motion.div>
             </motion.span>
           </motion.h1>
