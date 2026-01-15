@@ -71,7 +71,6 @@ const projects = [
 function ProjectCard({ project, index }: { project: typeof projects[0]; index: number }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [thumbnailLoaded, setThumbnailLoaded] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   
@@ -86,30 +85,47 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
     const video = videoRef.current;
     if (!video) return;
 
+    // Ensure video is muted for autoplay policies
+    video.muted = true;
+    video.playsInline = true;
+    
+    // Load first frame as thumbnail
     const loadThumbnail = () => {
-      // Set video to load first frame
-      video.currentTime = 0;
-      video.muted = true;
-      
-      const handleLoadedData = () => {
-        // Seek to first frame to show as thumbnail
-        video.currentTime = 0.1;
-        setThumbnailLoaded(true);
+      // Wait for metadata to be loaded
+      const handleMetadataLoaded = () => {
+        // Seek to first frame (0.1s to ensure we get a frame, not black screen)
+        if (video.readyState >= 2) {
+          video.currentTime = 0.1;
+          
+          // Wait for the seek to complete
+          const handleSeeked = () => {
+            // Pause to show thumbnail
+            video.pause();
+          };
+          
+          video.addEventListener('seeked', handleSeeked, { once: true });
+        }
       };
       
-      video.addEventListener('loadeddata', handleLoadedData, { once: true });
-      video.addEventListener('loadedmetadata', () => {
-        video.currentTime = 0.1;
-      }, { once: true });
+      // Also handle when data is loaded
+      const handleLoadedData = () => {
+        if (video.currentTime === 0 || video.currentTime > 0.2) {
+          video.currentTime = 0.1;
+          video.pause();
+        }
+      };
       
-      // Force load
+      video.addEventListener('loadedmetadata', handleMetadataLoaded, { once: true });
+      video.addEventListener('loadeddata', handleLoadedData, { once: true });
+      
+      // Force load the video
       video.load();
     };
 
-    // Small delay to ensure video element is ready
-    const timer = setTimeout(loadThumbnail, 100);
+    // Small delay to ensure video element is mounted
+    const timer = setTimeout(loadThumbnail, 50);
     return () => clearTimeout(timer);
-  }, []);
+  }, [project.video]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
@@ -124,7 +140,10 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
     setIsHovered(false);
     setIsPlaying(false);
     if (videoRef.current) {
-      videoRef.current.pause();
+      const video = videoRef.current;
+      video.pause();
+      // Reset to first frame to show thumbnail
+      video.currentTime = 0.1;
     }
     mouseX.set(0);
     mouseY.set(0);
@@ -184,10 +203,20 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
               muted
               loop
               playsInline
-              preload="metadata"
-              onLoadedMetadata={() => {
-                if (videoRef.current) {
-                  videoRef.current.currentTime = 0.1;
+              preload="auto"
+              onLoadedData={() => {
+                const video = videoRef.current;
+                if (video && video.readyState >= 2) {
+                  // Video data is loaded, seek to first frame
+                  video.currentTime = 0.1;
+                  video.pause();
+                }
+              }}
+              onSeeked={() => {
+                const video = videoRef.current;
+                if (video && !isHovered) {
+                  // Ensure video is paused after seeking to show thumbnail
+                  video.pause();
                 }
               }}
             >
@@ -286,17 +315,21 @@ export function PortfolioSection() {
   useEffect(() => {
     projects.forEach((project) => {
       const video = document.createElement('video');
-      video.preload = 'metadata';
+      video.preload = 'auto';
       video.src = project.video;
       video.muted = true;
       video.loop = true;
       video.playsInline = true;
       
       // Load first frame as thumbnail
-      video.addEventListener('loadedmetadata', () => {
+      const handleMetadataLoaded = () => {
         video.currentTime = 0.1;
-      }, { once: true });
+        video.addEventListener('seeked', () => {
+          video.pause();
+        }, { once: true });
+      };
       
+      video.addEventListener('loadedmetadata', handleMetadataLoaded, { once: true });
       video.load(); // Force loading
     });
   }, []);
